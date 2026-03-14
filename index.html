@@ -854,24 +854,20 @@
   <div class="feedback-grid">
     <div class="feedback-form">
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;margin-bottom:8px;">Chia sẻ cảm nhận</h3>
-      <p style="font-size:0.82rem;color:var(--stone-400);margin-bottom:20px;line-height:1.6;">Điền vào form bên dưới — phản hồi của bạn sẽ được Thùy Linh tổng hợp và cập nhật thực đơn.</p>
-      <!-- HƯỚNG DẪN: Thay YOUR_FORM_ID bằng ID Google Form của bạn
-           Cách lấy: Tạo Google Form → Nhấn "Gửi" → tab "<>" → copy link embed
-           Link dạng: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true -->
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSc2UY33WpAm1kxdlKgYrwDJ2YSitxe_fXvoijiYcrpsGRrDvA/viewform?embedded=true"
-        id="feedback-iframe"
-        width="100%"
-        style="border:none;border-radius:var(--radius-sm);min-height:520px;background:var(--warm-white);"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0">
-        Đang tải...
-      </iframe>
-      <div id="form-placeholder" style="background:var(--stone-100);border:1px dashed var(--stone-400);border-radius:var(--radius-sm);padding:28px 24px;text-align:center;">
-        <div style="font-size:1.6rem;margin-bottom:12px;">📋</div>
-        <p style="font-size:0.88rem;font-weight:500;color:var(--stone-800);margin-bottom:8px;">Chưa có Google Form</p>
-        <p style="font-size:0.8rem;color:var(--stone-600);line-height:1.6;">Xem hướng dẫn setup trong file HTML<br/>để kết nối Google Form của bạn.</p>
+      <p style="font-size:0.82rem;color:var(--stone-400);margin-bottom:24px;line-height:1.6;">Điền vào form bên dưới — phản hồi của bạn sẽ được Thùy Linh tổng hợp và cập nhật thực đơn.</p>
+
+      <div style="background:var(--warm-white);border:1px solid var(--stone-200);border-radius:var(--radius);padding:28px 24px;text-align:center;">
+        <div style="font-size:2.4rem;margin-bottom:14px;">💬</div>
+        <p style="font-size:1rem;font-weight:500;color:var(--stone-800);margin-bottom:8px;font-family:'Cormorant Garamond',serif;">Bạn thấy thực đơn thế nào?</p>
+        <p style="font-size:0.82rem;color:var(--stone-600);line-height:1.7;margin-bottom:24px;">Chia sẻ cảm nhận giúp Thùy Linh cải thiện thực đơn<br/>và thêm nhiều công thức phù hợp hơn cho các bé.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc2UY33WpAm1kxdlKgYrwDJ2YSitxe_fXvoijiYcrpsGRrDvA/viewform"
+           target="_blank"
+           style="display:inline-block;background:var(--bark);color:#fff;padding:13px 32px;border-radius:50px;font-size:0.84rem;font-weight:500;letter-spacing:0.05em;text-decoration:none;transition:background 0.2s;"
+           onmouseover="this.style.background='var(--stone-800)'"
+           onmouseout="this.style.background='var(--bark)'">
+          ✍️ &nbsp;Gửi phản hồi
+        </a>
+        <p style="font-size:0.74rem;color:var(--stone-400);margin-top:14px;">Mở Google Form — chỉ mất 1 phút</p>
       </div>
     </div>
     <div>
@@ -882,18 +878,6 @@
   </div>
 </div>
 
-<script>
-// Ẩn placeholder nếu Google Form đã được cấu hình
-(function(){
-  var iframe = document.getElementById('feedback-iframe');
-  var placeholder = document.getElementById('form-placeholder');
-  if(iframe && iframe.src && iframe.src.indexOf('1FAIpQLSc2UY33WpAm1kxdlKgYrwDJ2YSitxe_fXvoijiYcrpsGRrDvA') === -1) {
-    placeholder.style.display = 'none';
-  } else {
-    iframe.style.display = 'none';
-  }
-})();
-</script>
 
 <!-- FOOTER -->
 <footer>
