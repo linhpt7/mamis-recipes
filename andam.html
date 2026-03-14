@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mami's Recipes – Presented by Mẹ em Gạo (Thùy Linh)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #FAF8F5;
+    --warm-white: #F5F2EE;
+    --stone-100: #EDE9E3;
+    --stone-200: #D9D3C9;
+    --stone-400: #A89F93;
+    --stone-600: #7A7167;
+    --stone-800: #3D3831;
+    --bark: #6B5D4F;
+    --sage: #8A9A82;
+    --blush: #C9A99A;
+    --gold: #B89A6A;
+    --shadow-soft: 0 4px 24px rgba(61,56,49,0.07);
+    --shadow-medium: 0 8px 40px rgba(61,56,49,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--stone-800);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--stone-100); }
+  ::-webkit-scrollbar-thumb { background: var(--stone-400); border-radius: 10px; }
+
+  /* HEADER */
+  header {
+    background: var(--cream);
+    border-bottom: 1px solid var(--stone-200);
+    padding: 0 5%;
+    position: sticky; top:0; z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(250,248,245,0.92);
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    letter-spacing: 0.01em;
+  }
+  .logo span { color: var(--bark); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--stone-600);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--bark); }
+
+  .affiliate-btn {
+    background: var(--bark);
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .affiliate-btn:hover { background: var(--stone-800); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    padding: 80px 5% 60px;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1.18;
+    color: var(--stone-800);
+    margin-bottom: 18px;
+  }
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--bark);
+  }
+  .hero-text p {
+    color: var(--stone-600);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+  .hero-badges {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .badge {
+    background: var(--stone-100);
+    border: 1px solid var(--stone-200);
+    color: var(--stone-600);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 50px;
+  }
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .stat-card {
+    background: var(--warm-white);
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    box-shadow: var(--shadow-soft);
+    animation: floatUp 0.6s ease forwards;
+    opacity: 0;
+  }
+  .stat-card:nth-child(1) { animation-delay: 0.2s; }
+  .stat-card:nth-child(2) { animation-delay: 0.35s; margin-left: 30px; }
+  .stat-card:nth-child(3) { animation-delay: 0.5s; }
+  @keyframes floatUp {
+    from { opacity:0; transform: translateY(20px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone-400); margin-bottom: 4px; }
+  .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--stone-800); }
+
+  /* TABS / SECTION */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5% 80px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--stone-800);
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    color: var(--stone-400);
+    font-size: 0.84rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 36px;
+    border-radius: 2px;
+  }
+
+  /* TYPE SWITCH */
+  .type-switch {
+    display: inline-flex;
+    background: var(--stone-100);
+    border-radius: 50px;
+    padding: 4px;
+    margin-bottom: 40px;
+    border: 1px solid var(--stone-200);
+  }
+  .switch-btn {
+    padding: 10px 28px;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 400;
+    color: var(--stone-600);
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.02em;
+  }
+  .switch-btn.active {
+    background: var(--bark);
+    color: #fff;
+    box-shadow: 0 2px 12px rgba(107,93,79,0.25);
+  }
+
+  /* TODAY MENU */
+  .today-menu-card {
+    background: var(--warm-white);
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 50px;
+  }
+  .today-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px;
+  }
+  .today-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .generate-btn {
+    background: var(--stone-800);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .generate-btn:hover { background: var(--bark); transform: translateY(-1px); }
+  .meal-slots {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .meal-slot {
+    background: var(--cream);
+    border: 1px solid var(--stone-100);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .meal-slot:hover {
+    border-color: var(--bark);
+    box-shadow: 0 4px 16px rgba(107,93,79,0.1);
+  }
+  .meal-time {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--stone-400);
+    margin-bottom: 8px;
+  }
+  .meal-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--stone-800);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .meal-tag {
+    display: inline-block;
+    font-size: 0.67rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+    background: rgba(138,154,130,0.12);
+    padding: 3px 10px;
+    border-radius: 50px;
+  }
+  .meal-tag.blw {
+    color: var(--blush);
+    background: rgba(201,169,154,0.15);
+  }
+
+  /* RECIPE GRID */
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .recipe-card {
+    background: var(--warm-white);
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: var(--shadow-soft);
+  }
+  .recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--stone-400);
+  }
+  .recipe-thumb {
+    height: 110px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .recipe-thumb::after {
+    content:'';
+    position: absolute; inset:0;
+    background: linear-gradient(180deg, transparent 40%, rgba(61,56,49,0.08));
+  }
+  .recipe-body { padding: 18px 20px 20px; }
+  .recipe-category {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone-400);
+    margin-bottom: 6px;
+  }
+  .recipe-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--stone-800);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .recipe-desc {
+    font-size: 0.78rem;
+    color: var(--stone-600);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+  .recipe-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .recipe-type-badge {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-weight: 500;
+  }
+  .badge-trad { background: rgba(184,154,106,0.15); color: var(--gold); }
+  .badge-blw { background: rgba(201,169,154,0.2); color: var(--blush); }
+  .recipe-age {
+    font-size: 0.72rem;
+    color: var(--stone-400);
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .filter-chip {
+    padding: 7px 16px;
+    border-radius: 50px;
+    border: 1px solid var(--stone-200);
+    background: var(--warm-white);
+    font-size: 0.78rem;
+    color: var(--stone-600);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .filter-chip:hover, .filter-chip.active {
+    background: var(--bark);
+    color: #fff;
+    border-color: var(--bark);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset:0;
+    background: rgba(61,56,49,0.45);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity:1; pointer-events: all; }
+  .modal {
+    background: var(--cream);
+    border-radius: 20px;
+    max-width: 580px; width: 100%;
+    max-height: 88vh; overflow-y: auto;
+    box-shadow: 0 24px 80px rgba(61,56,49,0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-header {
+    padding: 32px 32px 20px;
+    border-bottom: 1px solid var(--stone-200);
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--stone-800);
+  }
+  .modal-close {
+    background: var(--stone-100);
+    border: none;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--stone-600);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--stone-200); }
+  .modal-body { padding: 28px 32px 32px; }
+  .modal-section { margin-bottom: 24px; }
+  .modal-section h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--stone-400);
+    margin-bottom: 12px;
+  }
+  .ingredients-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .ingredients-list li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; color: var(--stone-700);
+  }
+  .ingredients-list li::before {
+    content:'';
+    width:5px; height:5px;
+    border-radius:50%;
+    background: var(--gold);
+    flex-shrink:0;
+  }
+  .steps-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .step-item {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .step-num {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--stone-100);
+    border: 1px solid var(--stone-200);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--stone-600);
+    flex-shrink:0;
+  }
+  .step-text {
+    font-size: 0.88rem;
+    color: var(--stone-700);
+    line-height: 1.65;
+    font-weight: 300;
+    padding-top: 3px;
+  }
+  .tip-box {
+    background: rgba(184,154,106,0.08);
+    border: 1px solid rgba(184,154,106,0.25);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    font-size: 0.84rem;
+    color: var(--stone-700);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* AFFILIATE BANNER */
+  .affiliate-section {
+    background: var(--stone-800);
+    margin: 0;
+    padding: 60px 5%;
+  }
+  .affiliate-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .affiliate-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  .affiliate-text h2 em { color: var(--gold); font-style: italic; }
+  .affiliate-text p {
+    color: var(--stone-400);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+  .affiliate-link-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .link-preview {
+    font-size: 0.82rem;
+    color: var(--stone-400);
+    font-family: monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex:1;
+  }
+  .copy-btn {
+    background: var(--gold);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--stone-800);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: #cda96e; }
+  .share-actions {
+    display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;
+  }
+  .share-action-btn {
+    padding: 9px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .share-action-btn:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.3);
+    color: #fff;
+  }
+  .affiliate-stats {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .aff-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+  }
+  .aff-stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone-400);
+    margin-bottom: 6px;
+  }
+  .aff-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  /* FEEDBACK */
+  .feedback-section {
+    max-width: 1100px; margin: 0 auto; padding: 70px 5%;
+  }
+  .feedback-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+  }
+  .feedback-form {
+    background: var(--warm-white);
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow-soft);
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-label {
+    display: block;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone-400);
+    margin-bottom: 8px;
+  }
+  .form-input, .form-textarea {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--stone-800);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--bark); }
+  .form-textarea { height: 110px; resize: vertical; }
+  .submit-btn {
+    background: var(--bark);
+    color: #fff;
+    border: none;
+    padding: 13px 32px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+  }
+  .submit-btn:hover { background: var(--stone-800); }
+  .reviews-list { display: flex; flex-direction: column; gap: 16px; }
+  .review-card {
+    background: var(--warm-white);
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-sm);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-soft);
+  }
+  .review-header {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
+  }
+  .reviewer-name {
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--stone-800);
+  }
+  .review-date {
+    font-size: 0.72rem;
+    color: var(--stone-400);
+  }
+  .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 8px; }
+  .review-text {
+    font-size: 0.84rem;
+    color: var(--stone-600);
+    line-height: 1.65;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--stone-200);
+    padding: 32px 5%;
+    text-align: center;
+  }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--stone-800);
+    margin-bottom: 8px;
+  }
+  .footer-text {
+    font-size: 0.78rem;
+    color: var(--stone-400);
+    font-weight: 300;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 30px; right: 30px;
+    background: var(--stone-800);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity:1; transform: translateY(0); }
+
+  /* RATING STARS */
+  .star-rating { display: flex; gap: 5px; margin-bottom: 18px; }
+  .star-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 1.4rem; color: var(--stone-200);
+    transition: color 0.15s;
+    padding: 0;
+  }
+  .star-btn.lit, .star-btn:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 50px 5% 40px; }
+    .hero-visual { flex-direction: row; overflow-x: auto; }
+    .stat-card { min-width: 150px; }
+    .stat-card:nth-child(2) { margin-left: 0; }
+    .meal-slots { grid-template-columns: 1fr; }
+    .affiliate-inner { grid-template-columns: 1fr; gap: 36px; }
+    .feedback-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .recipe-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">Mami's <span>Recipes</span></div>
+    <ul class="nav-links">
+      <li><a href="#thuc-don">Thực Đơn</a></li>
+      <li><a href="#cong-thuc">Công Thức</a></li>
+      <li><a href="#affiliate">Mua Sắm</a></li>
+      <li><a href="#phan-hoi">Phản Hồi</a></li>
+    </ul>
+    <a href="#affiliate" class="affiliate-btn">Mua Đồ Cho Bé</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Thực đơn <em>ăn dặm</em><br/>của Mẹ em Gạo</h1>
+    <p>Thực đơn ăn dặm cá nhân do Thùy Linh tự tổng hợp cho bé Gạo — kết hợp ăn dặm truyền thống và BLW từ 6 tháng tuổi. Đây là kinh nghiệm cá nhân, không phải tư vấn chuyên gia dinh dưỡng.</p>
+    <div class="hero-badges">
+      <span class="badge">Từ 6 tháng tuổi</span>
+      <span class="badge">Ăn dặm truyền thống</span>
+      <span class="badge">BLW</span>
+      <span class="badge">Miễn phí</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <div class="stat-label">Công Thức</div>
+      <div class="stat-value">24+</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Nguyên Liệu</div>
+      <div class="stat-value">50+</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Tháng Kinh Nghiệm</div>
+      <div class="stat-value">12+</div>
+    </div>
+  </div>
+</div>
+
+<!-- TODAY MENU SECTION -->
+<div class="section" id="thuc-don">
+  <p class="section-sub">/ THỰC ĐƠN HÔM NAY</p>
+  <h2 class="section-title">Gợi ý thực đơn cho bé</h2>
+  <div class="divider"></div>
+
+  <div class="type-switch">
+    <button class="switch-btn active" id="btn-trad" onclick="switchType('trad')">Ăn Dặm Truyền Thống</button>
+    <button class="switch-btn" id="btn-blw" onclick="switchType('blw')">BLW - Tự Chỉ Huy</button>
+  </div>
+
+  <div class="today-menu-card">
+    <div class="today-header">
+      <div>
+        <div class="meal-time" style="margin-bottom:4px;">Gợi ý hôm nay</div>
+        <div class="today-title">Thực đơn <span id="menu-type-label">Truyền Thống</span></div>
+      </div>
+      <button class="generate-btn" onclick="generateTodayMenu()">Tạo mới</button>
+    </div>
+    <div class="meal-slots" id="meal-slots-container">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- RECIPES SECTION -->
+<div class="section" id="cong-thuc">
+  <p class="section-sub">/ TẤT CẢ CÔNG THỨC</p>
+  <h2 class="section-title">Chọn món để xem cách chế biến</h2>
+  <div class="divider"></div>
+
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-chip active" onclick="filterRecipes('all', this)">Tất cả</button>
+    <button class="filter-chip" onclick="filterRecipes('ngu-coc', this)">Ngũ cốc</button>
+    <button class="filter-chip" onclick="filterRecipes('rau-cu', this)">Rau củ</button>
+    <button class="filter-chip" onclick="filterRecipes('trai-cay', this)">Trái cây</button>
+    <button class="filter-chip" onclick="filterRecipes('thit', this)">Thịt</button>
+    <button class="filter-chip" onclick="filterRecipes('ca', this)">Cá & Hải sản</button>
+  </div>
+
+  <div class="recipe-grid" id="recipe-grid">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- AFFILIATE SECTION -->
+<div class="affiliate-section" id="affiliate">
+  <div class="affiliate-inner">
+    <div class="affiliate-text">
+      <h2>Đồ dùng <em>ăn dặm</em> cho bé</h2>
+      <p>Những sản phẩm tôi đã dùng và tin tưởng cho bé nhà mình — bát, thìa, ghế ăn dặm, máy xay, khay BLW chất lượng tốt, giá hợp lý.</p>
+      <div class="affiliate-link-box">
+        <span class="link-preview" id="aff-link">https://shp.ee/YOUR_AFFILIATE_LINK</span>
+        <button class="copy-btn" onclick="copyAffLink()">Sao chép link</button>
+      </div>
+      <div class="share-actions">
+        <button class="share-action-btn" onclick="window.open(document.getElementById('aff-link').textContent, '_blank')">🛒 Mua ngay</button>
+        <button class="share-action-btn" onclick="shareTo('facebook')">Chia sẻ Facebook</button>
+        <button class="share-action-btn" onclick="shareTo('zalo')">Gửi Zalo</button>
+      </div>
+    </div>
+    <div class="affiliate-stats">
+      <div class="aff-stat">
+        <div class="aff-stat-label">Sản phẩm được chọn lọc</div>
+        <div class="aff-stat-value">An toàn cho bé</div>
+      </div>
+      <div class="aff-stat">
+        <div class="aff-stat-label">Đã dùng thực tế</div>
+        <div class="aff-stat-value">Tin tưởng 100%</div>
+      </div>
+      <div class="aff-stat">
+        <div class="aff-stat-label">Giao hàng nhanh</div>
+        <div class="aff-stat-value">Toàn quốc</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK SECTION -->
+<div class="feedback-section" id="phan-hoi">
+  <p class="section-sub">/ CỘNG ĐỒNG</p>
+  <h2 class="section-title">Phản hồi từ cha mẹ</h2>
+  <div class="divider"></div>
+  <div class="feedback-grid">
+    <div class="feedback-form">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;margin-bottom:8px;">Chia sẻ cảm nhận</h3>
+      <p style="font-size:0.82rem;color:var(--stone-400);margin-bottom:20px;line-height:1.6;">Điền vào form bên dưới — phản hồi của bạn sẽ được Thùy Linh tổng hợp và cập nhật thực đơn.</p>
+      <!-- HƯỚNG DẪN: Thay YOUR_FORM_ID bằng ID Google Form của bạn
+           Cách lấy: Tạo Google Form → Nhấn "Gửi" → tab "<>" → copy link embed
+           Link dạng: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true -->
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSc2UY33WpAm1kxdlKgYrwDJ2YSitxe_fXvoijiYcrpsGRrDvA/viewform?embedded=true"
+        id="feedback-iframe"
+        width="100%"
+        style="border:none;border-radius:var(--radius-sm);min-height:520px;background:var(--warm-white);"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0">
+        Đang tải...
+      </iframe>
+      <div id="form-placeholder" style="background:var(--stone-100);border:1px dashed var(--stone-400);border-radius:var(--radius-sm);padding:28px 24px;text-align:center;">
+        <div style="font-size:1.6rem;margin-bottom:12px;">📋</div>
+        <p style="font-size:0.88rem;font-weight:500;color:var(--stone-800);margin-bottom:8px;">Chưa có Google Form</p>
+        <p style="font-size:0.8rem;color:var(--stone-600);line-height:1.6;">Xem hướng dẫn setup trong file HTML<br/>để kết nối Google Form của bạn.</p>
+      </div>
+    </div>
+    <div>
+      <div class="reviews-list" id="reviews-list">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Ẩn placeholder nếu Google Form đã được cấu hình
+(function(){
+  var iframe = document.getElementById('feedback-iframe');
+  var placeholder = document.getElementById('form-placeholder');
+  if(iframe && iframe.src && iframe.src.indexOf('1FAIpQLSc2UY33WpAm1kxdlKgYrwDJ2YSitxe_fXvoijiYcrpsGRrDvA') === -1) {
+    placeholder.style.display = 'none';
+  } else {
+    iframe.style.display = 'none';
+  }
+})();
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Mami's Recipes</div>
+    <div class="footer-text" style="margin-bottom:10px;">Presented by <strong>Mẹ em Gạo — Thùy Linh</strong> &nbsp;·&nbsp; Thực đơn ăn dặm từ 6 tháng tuổi &mdash; Truyền thống &amp; BLW</div>
+    <div style="font-size:0.74rem;color:var(--stone-400);line-height:1.7;max-width:620px;margin:0 auto 10px;">
+      ⚠️ <em>Lưu ý miễn trừ trách nhiệm:</em> Toàn bộ nội dung trên website này là thực đơn cá nhân của tôi, được chia sẻ với mục đích tham khảo. Đây <strong>không phải</strong> tư vấn từ chuyên gia dinh dưỡng hay bác sĩ nhi khoa. Mỗi bé có thể trạng và nhu cầu khác nhau — hãy tham khảo ý kiến bác sĩ trước khi áp dụng cho bé của bạn.
+    </div>
+    <div style="font-size:0.72rem;color:var(--stone-400);">&copy; 2026 Mami's Recipes by Thùy Linh. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- RECIPE MODAL -->
+<div class="modal-overlay" id="recipe-modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div id="modal-category" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--stone-400);margin-bottom:6px;"></div>
+        <div class="modal-title" id="modal-title"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>Nguyên liệu</h4>
+        <ul class="ingredients-list" id="modal-ingredients"></ul>
+      </div>
+      <div class="modal-section">
+        <h4>Cách chế biến</h4>
+        <ol class="steps-list" id="modal-steps"></ol>
+      </div>
+      <div class="modal-section">
+        <h4>Lưu ý</h4>
+        <div class="tip-box" id="modal-tip"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ========================= DATA =========================
+const recipes = [
+  {
+    id:1, name:"Cháo gạo trắng loãng",
+    photo:"https://source.unsplash.com/400x300/?rice+porridge+bowl,food", category:"ngu-coc",
+    type:"trad", age:"6 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    desc:"Cháo trắng mịn màng, dễ tiêu, phù hợp làm bước ăn dặm đầu tiên cho bé.",
+    ingredients:["50g gạo trắng","500ml nước lọc","1 miếng táo"],
+    steps:["Vo gạo sạch.","Cho gạo vào nồi cùng nước, bật bếp lớn đến khi sôi.","Hạ nhỏ lửa, nấu thêm 30-40 phút đến khi cháo thật nhuyễn.","Hoặc cho vào nồi nấu chậm nấu trong 2.5h","Xay mịn qua rây hoặc để nguyên tùy theo độ tuổi của bé.","Để nguội ấm rồi cho bé ăn."],
+    tip:"Đầu tiên cho bé ăn dặm, chỉ cần 1-2 muỗng cà phê, tăng dần sau mỗi ngày. Cháo phải thật loãng (tỉ lệ 1:10) để bé làm quen dần."
+  },
+  {
+    id:3, name:"Cháo bí đỏ cá hồi",
+    photo:"https://source.unsplash.com/400x300/?salmon+pumpkin+soup,food", category:"thit",
+    type:"trad", age:"7 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    desc:"Giàu omega-3 và vitamin A, thơm ngon tự nhiên không cần thêm gia vị.",
+    ingredients:["30g cá hồi phi lê","50g bí đỏ gọt nhỏ","3 muỗng cháo trắng loãng","1 thìa nhỏ dầu ô liu"],
+    steps:["Cá hồi rửa sạch, khô nước, kiểm tra kỹ xương.","Bí đỏ gọt nhỏ, hấp chín mềm khoảng 15 phút.","Cá hồi hấp cách thủy hoặc chiên ít dầu ô liu 5-6 phút mỗi mặt.","Xay nhuyễn cá hồi và bí đỏ cùng cháo trắng đến khi mịn.","Cho vào nồi quánh lại cho nóng.","Thêm dầu ô liu, trộn đều rồi cho bé ăn khi ấm."],
+    tip:"Cá hồi rất giàu omega-3 tốt cho não bé. Luôn kiểm tra kỹ xương trước khi cho bé ăn. Không thêm muối, nước mắm cho bé dưới 1 tuổi."
+  },
+  {
+    id:5, name:"Khoai lang hấp",
+    photo:"https://source.unsplash.com/400x300/?sweet+potato+steamed,food", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Món BLW lý tưởng đầu tiên, mềm đủ để bé cầm nắm nhưng giữ nguyên hình dạng.",
+    ingredients:["1 củ khoai lang","Nước lọc để hấp"],
+    steps:["Khoai lang rửa sạch, gọt thành thanh dài bằng ngón tay cái (khoảng 7-8cm).","Hấp khoai trên bếp hoặc lò nướng 180 độ trong 25-30 phút.","Kiểm tra độ mềm: ấn vào dễ biết khoai đã mềm chưa - phải rất mềm.","Để nguội ấm (không nóng), cho bé tự cầm ăn."],
+    tip:"Thanh khoai lang cần đủ to để bé cầm nắm, không cắt quá nhỏ. Bé sẽ tự cầm và bóp bẹp khoai ra ăn - đây chính là tinh thần của BLW."
+  },
+  {
+    id:6, name:"Chuối chín ",
+    photo:"https://source.unsplash.com/400x300/?Chuối+chín+,food", category:"trai-cay",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127820;",
+    bg:"#FCE4EC",
+    desc:"Đơn giản nhất trong BLW, chuối chín mềm tự nhiên, dễ cầm, vị ngọt bé yêu thích.",
+    ingredients:["1 quả chuối chín","(Không cần thêm gì)"],
+    steps:["Chọn chuối chín kỹ, vỏ vàng đậm, thậm chí có đốm đen thì càng tốt.","Bỏ 1/3 vỏ ở phần dưới làm tay cầm cho bé.","Giữ phần vỏ lại để bé cầm, phần thịt chuối để lộ ra cho bé tự gặm.","Theo dõi bé ăn, luôn ngồi bên cạnh."],
+    tip:"Đây là món BLW lý tưởng nhất! Chuối chín càng kỹ, thịt càng mềm để bé cầm. Phần vỏ giữ lại là 'tay cầm' tự nhiên rất thông minh."
+  },
+  {
+    id:7, name:"Bơ hấp purée",
+    photo:"https://source.unsplash.com/400x300/?avocado+puree,food", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Quả bơ béo tốt, kem mịn tự nhiên không cần nấu chín, bổ dưỡng cho não bé.",
+    ingredients:["1/2 quả bơ chín","1-2 muỗng sữa mẹ hoặc sữa công thức"],
+    steps:["Chọn bơ chín: vỏ đen đậm, ấn vào mềm.","Bổ đôi, lấy phần thịt xanh, bỏ hạt.","Nghiền mịn bằng nĩa hoặc máy xay.","Thêm sữa mẹ vào để tạo độ mịn mong muốn.","Dùng ngay, không cần nấu."],
+    tip:"Bơ có thể bị đen sau khi cắt - đây là phản ứng bình thường. Không cần nấu chín vì bơ đã là trái cây chín. Không thêm đường hay muối."
+  },
+  {
+    id:8, name:"Cà rốt hấp",
+    photo:"https://source.unsplash.com/400x300/?carrot+steamed,food", category:"rau-cu",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Cà rốt cắt thành thanh dài màu sắc, đẹp mắt, giàu vitamin A cho mắt sáng.",
+    ingredients:["2 củ cà rốt","1 thìa dầu ô liu","1 chút mùi tây (tùy chọn)"],
+    steps:["Cà rốt gọt thành thanh dài 7-8cm, dày khoảng 1cm.","Hấp khoai 20-25 phút đến khi thật mềm (ấn vào dễ dàng).","Có thể thêm ít dầu ô liu sau khi hấp.","Để nguội ấm, xếp đẹp lên đĩa cho bé tự cầm ăn."],
+    tip:"Cà rốt PHẢI mềm hơn mức bình thường. Test bằng cách đặt lên mấy ngón, ép nhẹ - phải bóp nát được. Nếu vẫn còn sổi thì bé có thể bị nghẹt."
+  },
+  {
+    id:9, name:"Cháo tôm rau cải",
+    photo:"https://source.unsplash.com/400x300/?shrimp+soup+bowl,food", category:"ca",
+    type:"trad", age:"7 tháng+",
+    icon:"&#129424;",
+    bg:"#E3F2FD",
+    desc:"Tôm tươi ngọt tự nhiên kết hợp rau cải bổ sung Sài Gòn xanh mát.",
+    ingredients:["50g tôm tươi (bóc vỏ, bỏ chỉ)","30g rau cải ngọt","50g cháo trắng","1 thìa dầu ăn"],
+    steps:["Tôm rửa sạch kỹ, bóc vỏ, bỏ chỉ trên, băm nhuyễn.","Rau cải nhúng nước sôi 2 phút rồi băm nhuyễn.","Xào sơ tôm với dầu ăn trên lửa lớn 3-4 phút.","Cho cháo trắng vào nồi cùng tôm, rau, nấu thêm 10 phút.","Để ấm, cho bé ăn."],
+    tip:"Tôm nên chọn tôm tươi, không ướp muối. Với bé dưới 1 tuổi không thêm muối nước mắm. Tôm là thực phẩm có thể gây dị ứng - tập cho bé thử lượng nhỏ trước."
+  },
+  {
+    id:10, name:"Purée lê chuối",
+    photo:"https://source.unsplash.com/400x300/?pear+puree+baby+food,food", category:"trai-cay",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127820;",
+    bg:"#FCE4EC",
+    desc:"Dịu dàng giàu vitamin C, kết hợp vị ngọt chua nhẹ tự nhiên rất thú vị.",
+    ingredients:["1/2 quả lê chín","1/4 quả chuối chín","1 thìa nước sôi để nguội"],
+    steps:["Lê rửa sạch, gọt nhỏ, bóc vỏ.","Chuối bóc vỏ.","Xay nhuyễn lê và chuối cùng nhau.","Lọc qua rây nếu cần mịn hơn.","Dùng ngay hoặc bảo quản ngăn mát tủ không quá 24 giờ."],
+    tip:"Lê có thể gây dị ứng nhẹ - tập ăn lượng nhỏ trước. Phần xơ của lê tốt cho tiêu hóa của bé. Chọn lê thật chín để vị ngọt tự nhiên."
+  },
+  {
+    id:12, name:"Dưa hấu cắt khối (BLW)",
+    photo:"https://source.unsplash.com/400x300/?watermelon+sliced,food", category:"trai-cay",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127820;",
+    bg:"#FCE4EC",
+    desc:"Mát lạnh giàu nước, tập cho bé cầm nắm và tự ăn trái cây mát.",
+    ingredients:["1 lát dưa hấu không hạt","(Không cần thêm gì)"],
+    steps:["Chọn dưa hấu không hạt hoặc nhặt hạt thật kỹ.","Cắt thành thanh dài 7-8cm, dày khoảng 1.5cm, bỏ vỏ.","Giữ phần ruột trắng để bé cầm.","Cho bé tự cầm và gặm.","Luôn ngồi cạnh bé trong lúc ăn."],
+    tip:"Dưa hấu có nhiều nước nên bé có thể bị ướt - chuẩn bị khăn. Luôn kiểm tra hạt thật kỹ. Không cắt quá nhỏ để tránh nghẹt."
+  },
+  {
+    id:13, name:"Đùi gà luộc mềm",
+    photo:"https://source.unsplash.com/400x300/?chicken+leg+boiled,food", category:"thit",
+    type:"blw", age:"7 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    desc:"Đùi gà luộc chín mềm, dễ xé nhỏ, giàu protein và chất béo tốt cho bé.",
+    ingredients:["1 đùi gà nhỏ","500ml nước","1 lát gừng nhỏ","1 chút hành lá"],
+    steps:["Rửa sạch đùi gà, cho vào nồi cùng nước lạnh và gừng.","Đun sôi, hớt bọt, hạ lửa nhỏ luộc 25-30 phút đến chín mềm.","Vớt ra để nguội, bỏ da và phần gân cứng, khía xunh quanh để bé dễ gặm","Giữ lại nước luộc để nấu mì hoặc cháo."],
+    tip:"Nước luộc gà rất ngọt và bổ dưỡng, đừng đổ đi! Dùng phần thịt đùi mềm hơn ức, bé dễ nuốt hơn."
+  },
+  {
+    id:14, name:"Mì nui nước luộc gà",
+    photo:"https://source.unsplash.com/400x300/?pasta+chicken+soup,food", category:"ngu-coc",
+    type:"blw", age:"7 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    desc:"Mì nui mềm dai nấu từ nước luộc gà ngọt tự nhiên, thơm ngon bổ dưỡng.",
+    ingredients:["30g mì/nui","200ml nước luộc gà","1 ít rau cải bằm nhỏ","1 thìa dầu ô liu"],
+    steps:["Đun sôi nước luộc gà trong nồi nhỏ.","Cho mì nui vào nấu theo hướng dẫn trên bao (thường 8-10 phút) đến khi thật mềm.","Thêm rau cải bằm vào 2 phút cuối.","Thêm dầu ô liu, để nguội ấm rồi cho bé ăn."],
+    tip:"Nấu mì mềm hơn thời gian ghi trên bao 2-3 phút để bé dễ nhai. "
+  },
+  {
+    id:15, name:"Súp măng tây xào tỏi",
+    photo:"https://source.unsplash.com/400x300/?asparagus+soup,food", category:"rau-cu",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Măng tây giàu folate và chất xơ, xào tỏi thơm nhẹ rồi xay thành súp mịn.",
+    ingredients:["5-6 cây măng tây","1 tép tỏi nhỏ","100ml nước dùng gà","1 thìa dầu ô liu"],
+    steps:["Măng tây rửa sạch, bẻ bỏ phần gốc cứng, cắt khúc 3cm.","Phi tỏi với dầu ô liu lửa nhỏ đến thơm (không để vàng).","Cho măng tây vào xào nhẹ 3-4 phút.","Thêm nước dùng gà, nấu thêm 5 phút đến mềm.","Xay nhuyễn mịn, lọc qua rây nếu cần."],
+    tip:"Chọn măng tây non, phần đầu mềm. Không nấu quá lâu để giữ màu xanh đẹp và vitamin C."
+  },
+  {
+    id:16, name:"Đậu hũ non yến mạch sốt hoa quả",
+    photo:"https://source.unsplash.com/400x300/?tofu+oatmeal+fruit,food", category:"ngu-coc",
+    type:"blw", age:"7 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    desc:"Kết hợp đậu hũ non mềm mịn với yến mạch và sốt hoa quả ngọt tự nhiên.",
+    ingredients:["50g đậu gà","3 muỗng yến mạch cán mỏng","100ml nước","1/4 hoa quả tùy chọn làm sốt (xoài/thanh long, chuối,…)"],
+    steps:["Nấu yến mạch với nước 5-7 phút đến khi nhuyễn.","Đậu gà ngâm qua đêm, xay nhuyễn với nước lọc.","Lọc bỏ bã, đun nhỏ lửa trên bếp đến khi sệt lại thành đậu hũ.","Trộn đều yến mạch và đậu hũ.","Xay hoặc nghiền xoài/chuối thành sốt mịn.","Rưới sốt hoa quả lên trên khi cho bé ăn."],
+    tip:"Đậu hũ non là nguồn protein thực vật tuyệt vời. Kiểm tra dị ứng đậu nành trước khi cho bé ăn lần đầu."
+  },
+  {
+    id:17, name:"Sandwich chuối tươi",
+    photo:"https://source.unsplash.com/400x300/?toast+banana+sandwich,food", category:"ngu-coc",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    desc:"Bánh mì mềm kẹp chuối nghiền, ngon miệng và tiện lợi cho bữa phụ.",
+    ingredients:["1 lát bánh mì sandwich mỏng","1/2 quả chuối chín","1 thìa nhỏ bơ ghee","1 lòng đỏ trứng","1 lát phô mai"],
+    steps:["Cắt bỏ viền bánh mì cho mềm hơn.","Trộn lòng đỏ trứng và bơ ghee phết lên mặt bánh","Cắt lát chuối rải lên trên","Phô mai sợi rải lên trên","Nướng 170 độ trong 7p (check lại độ chín của trứng)"],
+    tip:"Chọn bánh mì ít muối hoặc không muối cho bé dưới 1 tuổi. Chuối càng chín thì càng ngọt và dễ nghiền."
+  },
+  {
+    id:18, name:"Súp cải bó xôi",
+    photo:"https://source.unsplash.com/400x300/?spinach+soup+green,food", category:"rau-cu",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Cải bó xôi giàu sắt và canxi, xay mịn thành súp màu xanh đẹp bắt mắt.",
+    ingredients:["1 nắm cải bó xôi (spinach)","100ml nước dùng gà hoặc nước lọc","1 thìa dầu ô liu"],
+    steps:["Cải bó xôi rửa sạch, nhặt bỏ cọng già.","Chần sơ qua nước sôi 1 phút rồi vớt ra.","Xay nhuyễn cải với nước dùng.","Thêm dầu ô liu, để nguội ấm."],
+    tip:"Cải bó xôi chứa nhiều sắt nhưng cần ăn cùng thực phẩm giàu vitamin C để hấp thụ tốt hơn. Không nấu quá lâu để giữ dinh dưỡng."
+  },
+  {
+    id:19, name:"Mì bánh đa cá nước ngọt",
+    photo:"https://source.unsplash.com/400x300/?fish+noodle+soup,food", category:"ca",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129424;",
+    bg:"#E3F2FD",
+    desc:"Bánh đa mềm dai nấu với cá nước ngọt ngọt thanh, giàu đạm và omega.",
+    ingredients:["30g bánh đa/mì cắt nhỏ","50g cá trắm hoặc cá chép (phi lê)","1/4 quả cà chua","1 chút hành lá bằm"],
+    steps:["Mì ngâm nước lạnh 5-10p rồi luộc chín, vớt ra bát","1/2 khúc cá trắm hoặc chép rán sơ","1/4 quả cà chua thái nhỏ xào thơm với dầu olive và hành, thêm nước sôi nấu chín cá","Gắp cá ra bát gỡ xương, dằm miếng nhỏ","Chan nước nấu cá vào bát mì, múc thịt cá lên trên"],
+    tip:"Kiểm tra xương cá cực kỳ cẩn thận. Cá nước ngọt tươi thì nước dùng sẽ ngọt tự nhiên, không cần thêm gia vị."
+  },
+  {
+    id:20, name:"Súp cải ngọt",
+    photo:"https://source.unsplash.com/400x300/?green+vegetable+soup,food", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Cải ngọt xay mịn nhẹ nhàng, vị thanh mát, dễ tiêu và giàu vitamin K.",
+    ingredients:["3-4 cây cải ngọt","150ml nước dùng gà","1 thìa dầu oliu"],
+    steps:["Cải ngọt rửa sạch, cắt bỏ gốc, cắt khúc.","Phi hành xào thơm cải với dầu oliu","Xay nhuyễn cùng nước dùng."],
+    tip:"Cải ngọt có vị nhẹ, rất phù hợp cho bé mới tập ăn dặm. Có thể kết hợp với cà rốt để tăng độ ngọt tự nhiên."
+  },
+  {
+    id:21, name:"Bánh khoai lang yến mạch",
+    photo:"https://source.unsplash.com/400x300/?sweet+potato+pancake,food", category:"ngu-coc",
+    type:"blw", age:"7 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    desc:"Bánh mềm từ khoai lang và yến mạch, không đường, ngọt tự nhiên cho bữa phụ.",
+    ingredients:["100g khoai lang hấp chín nghiền","4 muỗng yến mạch cán mỏng","Bơ ghee hoặc dầu oliu"],
+    steps:["Yến mạch ngâm nước 5-10 phút cho mềm","Khoai lang cắt nhỏ hấp chín, nghiền nhuyễn lúc nóng","thêm yến mạch và phô mai trộn đều","Viên thành miếng dẹt, áp chảo 2 mặt với bơ ghee hoặc dầu oliu"],
+    tip:"Bánh này không cần thêm đường vì khoai lang đã ngọt tự nhiên. Để nguội hoàn toàn trước khi cho bé ăn để tránh bỏng."
+  },
+  {
+    id:22, name:"Canh cá nấu chua",
+    photo:"https://source.unsplash.com/400x300/?fish+tomato+soup,food", category:"ca",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129424;",
+    bg:"#E3F2FD",
+    desc:"Canh cá chua thanh với cà chua tươi, ngọt nước và kích thích vị giác bé.",
+    ingredients:["100g cá phi lê (cá diêu hồng hoặc cá basa)","1 quả cà chua chín","200ml nước","1 thìa dầu ăn","1 chút hành lá","1 miếng dứa"],
+    steps:["Cá nước ngọt/ cá hồi/ cá biển rán sơ","Phi thơm hành+ cà chua chờ cà chua chín mềm, thêm nước nấu sôi, thêm cá nấu 10 phút, thêm dứa nấu tiếp 5 phút.","Thêm rau gia vị thì là"],
+    tip:"Cà chua là nguồn vitamin C tự nhiên giúp hấp thu sắt từ cá tốt hơn. Bé dưới 1 tuổi chỉ cho ăn phần nước canh hoặc cá xay nhuyễn."
+  },
+  {
+    id:23, name:"Súp bầu",
+    photo:"https://source.unsplash.com/400x300/?zucchini+soup+cream,food", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Bầu mềm ngọt tự nhiên, dễ tiêu hóa, xay mịn thành súp mát lành cho bé.",
+    ingredients:["150g bầu gọt vỏ","100ml nước dùng gà","1 thìa dầu ô liu"],
+    steps:["Bầu rửa sạch, gọt vỏ, bỏ hạt, cắt miếng nhỏ.","Hấp chín mềm trong 12-15 phút.","Xay nhuyễn cùng nước dùng gà.","Thêm dầu ô liu vào, đun lại nhẹ.","Để nguội ấm cho bé ăn."],
+    tip:"Bầu rất mát và dễ tiêu, đặc biệt tốt cho bé bị táo bón nhẹ. Chọn bầu non để súp ngọt và mịn hơn."
+  },
+  {
+    id:24, name:"Bí ngòi nhồi thịt",
+    photo:"https://source.unsplash.com/400x300/?stuffed+zucchini+pork,food", category:"thit",
+    type:"blw", age:"7 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    desc:"Bí ngòi mềm nhồi thịt heo xay, hấp chín thơm ngon và đẹp mắt.",
+    ingredients:["1 quả bí ngòi nhỏ","50g thịt heo xay","1 thìa dầu ăn","1 chút hành lá bằm"],
+    steps:["Thịt vai ( cả nạc và mỡ) xay nhuyễn với 1-2 nhánh hành, dầu ăn, rồi trộn đều với là hành thái nhỏ.","Bí ngòi cắt khúc 2 đốt tay, khoét ruột, nhồi thịt vào bí.","Đun sôi nước, thả bí vào nấu chín, thêm rau gia vị hành mùi tuỳ chọn"],
+    tip:"Bí ngòi hấp sẽ tiết nước ngọt thấm vào thịt rất thơm. Kiểm tra thịt chín kỹ trước khi cho bé ăn."
+  },
+  {
+    id:25, name:"Bánh chuối yến mạch hấp",
+    photo:"https://source.unsplash.com/400x300/?banana+oat+cake,food", category:"ngu-coc",
+    type:"blw", age:"7 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    desc:"Bánh hấp mềm xốp từ chuối chín và yến mạch, ngọt tự nhiên không đường.",
+    ingredients:["1/2 quả chuối chín","1 muỗng yến mạch cán mỏng"],
+    steps:["Yến mạch ngâm nước 5-10 phút cho mềm","Xay nhuyễn yến mạch cùng 1/2 quả chuối","Thêm bột quế","Đổ hỗn hợp vào cốc thủy tinh, bọc khăn xô rồi đem hấp 30p","Sau khi hấp dùng tăm chọc nếu không dính tăm là chín"],
+    tip:"Chuối càng chín thì bánh càng ngọt. Bánh hấp mềm hơn nướng, phù hợp bé nhỏ hơn. Bảo quản tủ lạnh dùng trong 2 ngày."
+  },
+  {
+    id:27, name:"Cháo chả cá hồi",
+    photo:"https://source.unsplash.com/400x300/?salmon+patty+porridge,food", category:"ca",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129424;",
+    bg:"#E3F2FD",
+    desc:"Cháo thơm ngậy với chả cá hồi tự làm, giàu omega-3 và protein.",
+    ingredients:["50g cá hồi phi lê","1 muỗng yến mạch","1 miếng bí đỏ","1/4 củ khoai tây","1/4 củ cà rốt","1 cây măng tây","Dầu oliu"],
+    steps:["Yến mạch ngâm nước 5-10 phút rồi vớt ra để ráo","Nấu yến mạch với nước dashi (hoặc nước lọc) thành cháo","Bí đỏ cắt hạt ngô hấp chín","Khoai tây thái nhỏ luộc sơ, cà rốt măng tây thái nhỏ","Cá hồi xay nhuyễn cùng khoai tây, cà rốt, măng tây","Viên dẹt áp chảo cá hồi","Múc cháo ra bát, thêm bí đỏ trộn đều, cắt chả cá hồi thành miếng để lên trên"],
+    tip:"Chả cá hồi tự làm không có muối và chất bảo quản, an toàn cho bé. Có thể làm trước và bảo quản ngăn mát 1-2 ngày."
+  },
+  {
+    id:28, name:"Súp kale",
+    photo:"https://source.unsplash.com/400x300/?kale+soup+green,food", category:"rau-cu",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Kale giàu vitamin K, C và sắt, xay mịn thành súp bổ dưỡng cho bé.",
+    ingredients:["1 nắm lá kale non","100ml nước dùng gà","1 thìa dầu ô liu"],
+    steps:["Lá kale rửa sạch, bỏ phần cọng cứng giữa.","Phi hành xào thơm cho rau vào, cho nước vào đun mềm","Xay nhuyễn cùng nước dùng."],
+    tip:"Kale có thể hơi đắng với bé, thêm khoai tây hoặc cà rốt nghiền sẽ dịu vị hơn. Chọn lá non để ít đắng và mềm hơn."
+  },
+  {
+    id:29, name:"Chả bò phomai",
+    photo:"https://source.unsplash.com/400x300/?beef+cheese+patty,food", category:"thit",
+    type:"blw", age:"7 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    desc:"Chả bò mềm béo kết hợp phomai tan chảy, giàu protein và canxi.",
+    ingredients:["80g thịt bò xay mịn","1 miếng phomai tách muối","1 thìa dầu ăn","1 chút hành tây bằm nhỏ"],
+    steps:["Thịt thăn bò mềm thái mỏng ướp dầu ăn 5 phút rồi xay nhuyễn với tỏi 1/5 củ hành tây","Cuộn phô mai thành viên nhỏ để làm nhân. Bọc thịt bò đã xay nhuyễn bên ngoài phomai thành miếng tròn dẹt.","Đun nóng dầu, cho chả vào, nhỏ lửa, áp chảo cho chín hai mặt (đậy vung cho chả không bị khô)"],
+    tip:"Phomai tách muối thơm ngon phù hợp hơn cho bé. Chả cần chín kỹ bên trong, kiểm tra bằng cách cắt đôi."
+  },
+  {
+    id:30, name:"Cơm nấu hạt mềm",
+    photo:"https://source.unsplash.com/400x300/?rice+quinoa+bowl,food", category:"ngu-coc",
+    type:"blw", age:"8 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    desc:"Cơm nấu thêm hạt quinoa (diêm mạch) hoặc hạt kê, mềm hơn cơm thường, giàu dinh dưỡng.",
+    ingredients:["50g gạo tẻ","10g hạt quinoa hoặc hạt kê (ngâm qua đêm)","150ml nước (nhiều hơn bình thường)"],
+    steps:["Vo sạch gạo và hạt quinoa.","Ngâm hỗn hợp trong nước 30 phút.","Nấu với tỉ lệ nước nhiều hơn bình thường (1 gạo : 4 nước).","Nấu đến khi cơm chín mềm, hạt nở bung.","Để nguội ấm, nghiền nhẹ bằng muỗng trước khi cho bé ăn."],
+    tip:"Cơm nấu mềm hơn cháo nhưng đặc hơn, phù hợp bé 8 tháng trở lên đã tập nhai. Quinoa chứa đủ 9 axit amin thiết yếu."
+  },
+  {
+    id:31, name:"Canh bí đỏ non xào tỏi",
+    photo:"https://source.unsplash.com/400x300/?pumpkin+garlic+soup,food", category:"rau-cu",
+    type:"blw", age:"7 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    desc:"Bí đỏ non xào tỏi thơm nức, nấu canh ngọt tự nhiên giàu vitamin A.",
+    ingredients:["150g bí đỏ non gọt vỏ","1 tép tỏi nhỏ","200ml nước","1 thìa dầu ăn"],
+    steps:["Bí đỏ non thái mỏng","Đun nóng chảo, nhỏ lửa thêm dầu ăn và tỏi thái nhỏ phi thơm thêm bí đỏ non đảo đều rồi thêm 1 xíu nước sôi đậy vung 3 phút, đảo thêm lần nữa đậy vung nấu đến khi bí chín"],
+    tip:"Bí đỏ non mềm và ngọt hơn bí già, xay ra màu vàng cam đẹp. Tỏi phi thơm giúp tăng hương vị nhưng không cay."
+  }
+,
+  {
+    id:32, name:"Soup kem bí đỏ", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?pumpkin+cream+soup,food",
+    desc:"Soup bí đỏ béo ngậy với sốt kem phô mai, ngọt tự nhiên và giàu vitamin A.",
+    ingredients:["1 miếng bí đỏ","Bơ ghee","1 xíu bột mì","60ml sữa công thức","1 miếng phô mai tách muối"],
+    steps:["Bí đỏ hấp chín, thêm nước lọc xay nhuyễn","Xào 1 xíu bột mì với bơ ghee, thêm sữa, 1 miếng phomai khuấy đều","Nhỏ lửa đến khi sốt sệt lại","Múc sốt kem lên trên súp bí"],
+    tip:"Dùng phô mai tách muối để phù hợp cho bé dưới 1 tuổi. Bí đỏ càng chín thì soup càng ngọt."
+  },
+  {
+    id:33, name:"Canh ngô ngọt/ngô nếp", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?corn+soup+sweet,food",
+    desc:"Canh ngô nấu nước luộc gà ngọt thanh, mềm tự nhiên giàu tinh bột và chất xơ.",
+    ingredients:["2 khoanh ngô ngọt/ngô nếp","Nước luộc gà"],
+    steps:["Cho ngô vào nước luộc gà đun đến khi chín mềm"],
+    tip:"Chọn ngô non hạt mềm. Nước luộc gà làm canh ngọt hơn nhiều so với nước lọc."
+  },
+  {
+    id:34, name:"Bí xanh hấp", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?zucchini+steamed+green,food",
+    desc:"Bí xanh hấp mềm vị nhẹ nhàng, dễ cầm nắm, lý tưởng cho bé BLW mới bắt đầu.",
+    ingredients:["1 miếng bí xanh"],
+    steps:["Bí xanh rửa sạch, gọt vỏ, cắt thành thanh dài 7-8cm.","Hấp 15-20 phút đến khi thật mềm (ấn ngón tay vào dễ dàng).","Để nguội ấm, cho bé tự cầm ăn."],
+    tip:"Hấp đến khi ấn ngón tay vào dễ dàng thì mới đủ mềm cho bé BLW. Cắt thành thanh dài để bé cầm."
+  },
+  {
+    id:35, name:"Viên khoai lang cá hồi", category:"ca",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129424;",
+    bg:"#E3F2FD",
+    photo:"https://source.unsplash.com/400x300/?sweet+potato+salmon+ball,food",
+    desc:"Viên mềm kết hợp khoai lang ngọt và cá hồi giàu omega-3, dễ cầm cho bé tự ăn.",
+    ingredients:["100g khoai lang","50g cá hồi phi lê","1 thìa bơ ghee","1 nhánh sả nhỏ","1 lát gừng mỏng"],
+    steps:["Khoai lang cắt nhỏ hấp chín rồi nghiền nhuyễn cùng bơ ghee","Cá hồi hấp chín cùng sả gừng, cho vào khoai đã nghiền","Dùng nĩa tán mịn cá cho đều với khoai","Viên thành viên dẹt"],
+    tip:"Kiểm tra kỹ xương cá hồi trước khi trộn. Viên nên đủ to để bé cầm, không quá nhỏ."
+  },
+  {
+    id:36, name:"Soup cải cầu vồng", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?rainbow+vegetable+soup,food",
+    desc:"Soup nhiều màu sắc từ các loại rau củ, bắt mắt và giàu vitamin đa dạng.",
+    ingredients:["1/4 bó cải bó xôi","1 củ cà rốt nhỏ","1/4 bắp cải tím","100ml nước dùng gà","1 thìa dầu ô liu"],
+    steps:["Chuẩn bị nguyên liệu.","Chế biến theo món.","Để nguội ấm cho bé ăn."],
+    tip:"Kết hợp cà rốt, cải bó xôi, bắp cải tím để đủ màu sắc. Xay từng loại riêng rồi đổ cạnh nhau."
+  },
+  {
+    id:37, name:"Nui xào thịt băm", category:"thit",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    photo:"https://source.unsplash.com/400x300/?pasta+minced+meat,food",
+    desc:"Nui mềm xào cùng thịt băm thơm, đủ dinh dưỡng cho bữa chính của bé.",
+    ingredients:["30g nui nhỏ","50g thịt ba chỉ xay nhuyễn","1 nhánh hành lá","1 thìa dầu ăn","Rau mùi tùy chọn"],
+    steps:["Nui ngâm nước lạnh luộc chín","Thịt ba chỉ xay nhuyễn xào thơm với hành","Thêm xíu nước lọc, cho nui vào đảo đều rồi đậy vung nhỏ lửa trong 3 phút","Thêm rau mùi thái nhỏ"],
+    tip:"Nên dùng thịt ba chỉ để có độ mềm và ngậy. Nấu thêm 2-3 phút so với hướng dẫn trên bao."
+  },
+  {
+    id:38, name:"Soup susu xào tỏi", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?chayote+soup+garlic,food",
+    desc:"Su su mềm ngọt xào tỏi thơm, xay thành soup thanh mát tốt cho tiêu hóa.",
+    ingredients:["1 quả su su nhỏ","1 tép tỏi","100ml nước dùng gà","1 thìa dầu ô liu"],
+    steps:["Su su gọt vỏ, bỏ lõi, cắt miếng nhỏ.","Phi tỏi với dầu ô liu lửa nhỏ đến thơm.","Cho su su vào xào 3-4 phút.","Thêm nước dùng gà, nấu thêm 10 phút đến mềm.","Xay nhuyễn mịn, để nguội ấm cho bé ăn."],
+    tip:"Su su (trái su su) rất nhẹ vị, phù hợp trộn cùng rau khác. Phi tỏi lửa thật nhỏ để không đắng."
+  },
+  {
+    id:39, name:"Cháo chả bò", category:"thit",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    photo:"https://source.unsplash.com/400x300/?beef+lentil+porridge,food",
+    desc:"Cháo đậu lăng hạt kê kết hợp chả bò mềm, giàu sắt và protein.",
+    ingredients:["30g gạo","15g đậu lăng (ngâm qua đêm)","15g hạt kê (ngâm qua đêm)","80g thịt thăn bò","1 tép tỏi nhỏ","1 xíu bột quế","1 xíu dầu ô liu","500ml nước dùng"],
+    steps:["Đậu lăng, hạt kê ngâm qua đêm nấu cùng gạo tỉ lệ 1 gạo :8 nước (có thể dùng nước luộc gà hoặc nước luộc mướp)","Thịt thăn bò thái mỏng xay nhuyễn ướp cùng 1 nhánh tỏi nhỏ, 1 xíu bột quế, 1 xíu dầu oliu","Viên thịt thành viên nhỏ ấn dẹt rồi áp chảo 2 mặt","Múc cháo ra bát, cắt chả thành miếng nhỏ lên trên","Để riêng 1 miếng chả cho con tự cầm ăn"],
+    tip:"Đậu lăng ngâm qua đêm giúp cháo mau chín và dễ tiêu hơn. Chả bò áp chảo mặt ngoài giòn nhẹ."
+  },
+  {
+    id:40, name:"Soup sữa măng tây", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?asparagus+cream+soup,food",
+    desc:"Măng tây xay với sữa tạo soup kem mịn ngọt nhẹ, giàu folate cho bé.",
+    ingredients:["5-6 cây măng tây non","60ml sữa công thức hoặc sữa mẹ"],
+    steps:["Măng tây luộc 1-3 phút để nguội","Xay nhuyễn với 60ml sữa công thức thành súp"],
+    tip:"Không luộc măng tây quá lâu để giữ màu xanh và vitamin C. Dùng sữa mẹ hoặc sữa CT đều được."
+  },
+  {
+    id:41, name:"Soup gà rau củ", category:"thit",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    photo:"https://source.unsplash.com/400x300/?chicken+vegetable+soup,food",
+    desc:"Soup gà rau củ đậm đà từ nước luộc gà, bổ dưỡng và dễ tiêu.",
+    ingredients:["1 lườn gà nhỏ","1 củ cà rốt","3-4 cây măng tây","2 tai nấm hương","1/4 củ hành tây","30g đậu lăng hoặc diêm mạch (ngâm qua đêm)","300ml nước luộc gà"],
+    steps:["Lườn (ức) gà luộc xé nhỏ","Nấm hương, cà rốt, măng tây, hành tây thái nhỏ xào thơn","Đậu lăng (hoặc diêm mạch) ngâm qua đêm hấp chín","Cho nước luộc gà, đậu lăng (diêm mạch) nấu sối, thêm thịt gà, rau củ khuấy đều","1 xíu bột năng hòa cùng nước lạnh đổ vào nồi khuấy cho súp đặc lại"],
+    tip:"Nước luộc gà là nền tảng vị ngọt tự nhiên. Có thể thêm diêm mạch để tăng protein thực vật."
+  },
+  {
+    id:42, name:"Trứng cuộn rau củ", category:"thit",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127831;",
+    bg:"#FFE8D6",
+    photo:"https://source.unsplash.com/400x300/?egg+roll+vegetable,food",
+    desc:"Lòng đỏ trứng cuộn rau củ mềm, giàu protein và vitamin nhiều màu sắc.",
+    ingredients:["2 lòng đỏ trứng","3-4 cây măng tây","1/2 củ cà rốt nhỏ","1/4 củ hành tây","1 thìa dầu ăn"],
+    steps:["Măng tây luộc chín thái nhỏ","Cà rốt bào sợi luộc chín thái nhỏ","Hành tây thái nhỏ","Lòng đỏ trứng đánh tan với rau củ","Rán chín cuộn lại"],
+    tip:"Chỉ dùng lòng đỏ cho bé dưới 12 tháng để hạn chế nguy cơ dị ứng. Rán lửa thật nhỏ."
+  },
+  {
+    id:43, name:"Mì (nui) sốt kem ngô ngọt", category:"ngu-coc",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    photo:"https://source.unsplash.com/400x300/?pasta+corn+cream+sauce,food",
+    desc:"Nui mềm rưới sốt kem ngô ngọt thơm béo, hấp dẫn và giàu dinh dưỡng.",
+    ingredients:["30g nui nhỏ","1 khoanh ngô ngọt (tách hạt)","90ml sữa công thức","1 miếng phô mai tách muối"],
+    steps:["Nui ngâm nước lạnh 10p sau đó luộc chín","Ngô ngọt xay nhuyễn với 90ml sữa công thức sau đó lọc qua rây bỏ bã","Đun nóng lửa nhỏ, khuấy đến khi sốt sệt lại","Thêm phô mai tách muối khuấy đều","Rưới sốt lên nui đã luộc chín"],
+    tip:"Lọc bã ngô thật kỹ để sốt mịn. Phô mai tách muối thêm vào cuối để không bị tách sốt."
+  },
+  {
+    id:44, name:"Ớt chuông hấp", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?bell+pepper+colorful,food",
+    desc:"Ớt chuông nhiều màu hấp mềm, ngọt tự nhiên giàu vitamin C cho mắt sáng.",
+    ingredients:["1/2 quả ớt chuông đỏ hoặc vàng","Nước lọc để hấp"],
+    steps:["Ớt chuông rửa sạch, bỏ hạt, cắt thành thanh dài.","Hấp 10-12 phút đến khi mềm.","Để nguội ấm, cho bé tự cầm ăn."],
+    tip:"Chọn ớt chuông đỏ hoặc vàng vì ngọt hơn xanh. Bỏ hạt kỹ trước khi hấp."
+  },
+  {
+    id:45, name:"Cháo sườn nấm hương", category:"ngu-coc",
+    type:"blw", age:"6 tháng+",
+    icon:"&#127859;",
+    bg:"#FFF3CD",
+    photo:"https://source.unsplash.com/400x300/?pork+ribs+mushroom+porridge,food",
+    desc:"Cháo đậu lăng hạt kê nấu với sườn và nấm hương thơm ngon, giàu khoáng chất.",
+    ingredients:["30g gạo","15g đậu lăng","15g hạt kê","2-3 miếng sườn non","3-4 tai nấm hương","500ml nước"],
+    steps:["Đậu lăng, hạt kê ngâm qua đêm nấu với gạo thành cháo, tỉ lệ 30g hạt, 30g gạo, 500ml nước","Sườn chần sơ rửa sạch, xào thơm với hành, dầu oliu","Cho sườn nấu cùng cháo 15p cuối","Nấm hương thái nhỏ cỡ hạt ngô xào chín","Múc cháo ra bát thêm nấm hương, gỡ thịt trộn đều","Để 1 miếng sườn cho bé gặm"],
+    tip:"Nấm hương thái nhỏ hạt ngô giúp bé tập nhai. Sườn nấu đến khi thịt tự rời xương."
+  },
+  {
+    id:46, name:"Bí ngòi xào", category:"rau-cu",
+    type:"blw", age:"6 tháng+",
+    icon:"&#129365;",
+    bg:"#E8F5E9",
+    photo:"https://source.unsplash.com/400x300/?zucchini+stirfry,food",
+    desc:"Bí ngòi xào mềm vị nhẹ, dễ ăn và giàu nước tốt cho tiêu hóa của bé.",
+    ingredients:["1/2 quả bí ngòi","1 tép tỏi nhỏ","1 thìa dầu ăn"],
+    steps:["Bí ngòi rửa sạch, cắt thành khúc hoặc thanh dài.","Phi tỏi với dầu ăn lửa nhỏ.","Cho bí ngòi vào xào 3-4 phút lửa vừa đến khi mềm.","Để nguội ấm cho bé ăn."],
+    tip:"Xào lửa lớn nhanh tay để giữ độ giòn mềm tự nhiên. Bí ngòi nhanh chín chỉ cần 3-4 phút."
+  }
+];
+
+const mealSuggestions = {
+  trad: [
+    {time:"Bữa chính", items:["Cháo gạo trắng loãng","Cháo bí đỏ cá hồi","Cháo tôm rau cải","Cháo chả cá hồi"]},
+    {time:"Bữa phụ",   items:["Purée lê chuối","Bơ hấp purée","Chuối chín","Dưa hấu cắt khối (BLW)"]}
+  ],
+  blw: [
+    {time:"Bữa chính (ngũ cốc)", items:["Mì nui nước luộc gà","Bánh khoai lang yến mạch","Bánh chuối yến mạch hấp","Cơm nấu hạt mềm","Đậu hũ non yến mạch sốt hoa quả","Sandwich chuối tươi","Mì (nui) sốt kem ngô ngọt","Cháo sườn nấm hương"]},
+    {time:"Bữa chính (thịt/cá)", items:["Đùi gà luộc mềm","Mì bánh đa cá nước ngọt","Canh cá nấu chua","Bí ngòi nhồi thịt","Cháo chả cá hồi","Chả bò phomai","Viên khoai lang cá hồi","Nui xào thịt băm","Cháo chả bò","Soup gà rau củ","Trứng cuộn rau củ"]},
+    {time:"Bữa phụ (rau/trái cây)", items:["Khoai lang hấp","Cà rốt hấp","Dưa hấu cắt khối (BLW)","Súp bầu","Súp cải ngọt","Súp măng tây xào tỏi","Súp cải bó xôi","Súp kale","Bơ hấp purée","Purée lê chuối","Chuối chín","Canh bí đỏ non xào tỏi","Soup kem bí đỏ","Canh ngô ngọt/ngô nếp","Bí xanh hấp","Soup cải cầu vồng","Soup susu xào tỏi","Soup sữa măng tây","Ớt chuông hấp","Bí ngòi xào"]}
+  ]
+};
+
+// ========================= STATE =========================
+let currentType = 'trad';
+let currentRating = 0;
+let reviews = [
+  {name:"Mẹ của Khôi An", date:"10/03/2026", rating:5, text:"Bé nhà mình 7 tháng ăn cháo cá hồi bí đỏ rất thích, ăn hết chén ngay. Công thức đơn giản mà ngon tuyệt vời!"},
+  {name:"Bà Hoa (mẹ Minh Châu)", date:"08/03/2026", rating:5, text:"Đã thử BLW với khoai lang hấm, bé tự cầm và ăn rất hào hứng. Rất vui vì có app hướng dẫn cụ thể như vậy!"},
+  {name:"Mẹ Tú Nhi", date:"05/03/2026", rating:4, text:"Công thức rõ ràng, dễ làm. Bé 8 tháng nhà mình ăn được nhiều món hơn trước. Cảm ơn team rất nhiều."}
+];
+let currentFilter = 'all';
+
+// ========================= RENDER =========================
+function renderTodayMenu() {
+  const container = document.getElementById('meal-slots-container');
+  const data = mealSuggestions[currentType];
+  const tagLabel = currentType === 'trad' ? 'Truyền thống' : 'BLW';
+  const tagClass = currentType === 'trad' ? 'meal-tag' : 'meal-tag blw';
+  container.innerHTML = data.map(slot => {
+    const validItems = slot.items.filter(x => x && x.trim());
+    const item = validItems.length ? validItems[Math.floor(Math.random() * validItems.length)] : '—';
+    return `<div class="meal-slot" onclick="findAndOpenRecipe('${item}')">
+      <div class="meal-time">${slot.time}</div>
+      <div class="meal-name">${item}</div>
+      <span class="${tagClass}">${tagLabel}</span>
+    </div>`;
+  }).join('');
+}
+
+function renderRecipes(filter) {
+  const grid = document.getElementById('recipe-grid');
+  let filtered = recipes;
+  if(filter && filter !== 'all') filtered = recipes.filter(r => r.category === filter);
+  if(currentType !== 'all') filtered = filtered;
+  grid.innerHTML = filtered.map(r => {
+    const badgeClass = r.type === 'trad' ? 'badge-trad' : 'badge-blw';
+    const badgeLabel = r.type === 'trad' ? 'Truyền thống' : 'BLW';
+    const thumbContent = r.photo
+      ? `<img src="${r.photo}" alt="${r.name}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<span>${r.icon}</span>'">`
+      : `<span>${r.icon}</span>`;
+    return `<div class="recipe-card" onclick="openRecipe(${r.id})">
+      <div class="recipe-thumb" style="background:${r.bg}">
+        ${thumbContent}
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-category">${getCatLabel(r.category)}</div>
+        <div class="recipe-name">${r.name}</div>
+        <div class="recipe-desc">${r.desc}</div>
+        <div class="recipe-footer">
+          <span class="recipe-type-badge ${badgeClass}">${badgeLabel}</span>
+          <span class="recipe-age">${r.age}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getCatLabel(cat) {
+  const map = {
+    'ngu-coc':'Ngũ cốc & Bột',
+    'rau-cu':'Rau củ',
+    'trai-cay':'Trái cây',
+    'thit':'Thịt & Gia cầm',
+    'ca':'Cá & Hải sản'
+  };
+  return map[cat] || cat;
+}
+
+function renderReviews() {
+  const list = document.getElementById('reviews-list');
+  list.innerHTML = reviews.map(r => {
+    const stars = Array(r.rating).fill('&#9733;').join('');
+    return `<div class="review-card">
+      <div class="review-header">
+        <span class="reviewer-name">${r.name}</span>
+        <span class="review-date">${r.date}</span>
+      </div>
+      <div class="stars">${stars}</div>
+      <div class="review-text">"${r.text}"</div>
+    </div>`;
+  }).join('');
+}
+
+// ========================= ACTIONS =========================
+function switchType(type) {
+  currentType = type;
+  document.getElementById('menu-type-label').textContent = type === 'trad' ? 'Truyền Thống' : 'BLW - Tự Chỉ Huy';
+  document.getElementById('btn-trad').classList.toggle('active', type === 'trad');
+  document.getElementById('btn-blw').classList.toggle('active', type === 'blw');
+  generateTodayMenu();
+}
+
+function generateTodayMenu() {
+  renderTodayMenu();
+}
+
+function filterRecipes(cat, el) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderRecipes(cat);
+}
+
+function findAndOpenRecipe(name) {
+  const r = recipes.find(x => x.name === name);
+  if(r) openRecipe(r.id);
+  else showToast('Công thức đang được cập nhật!');
+}
+
+function openRecipe(id) {
+  const r = recipes.find(x => x.id === id);
+  if(!r) return;
+  document.getElementById('modal-category').textContent = getCatLabel(r.category) + ' / ' + (r.type === 'trad' ? 'Ăn Dặm Truyền Thống' : 'BLW');
+  document.getElementById('modal-title').textContent = r.name;
+  document.getElementById('modal-ingredients').innerHTML = r.ingredients.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('modal-steps').innerHTML = r.steps.map((s,i) => `
+    <li class="step-item">
+      <span class="step-num">${i+1}</span>
+      <span class="step-text">${s}</span>
+    </li>`).join('');
+  document.getElementById('modal-tip').textContent = r.tip;
+  document.getElementById('recipe-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('recipe-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if(e.target === document.getElementById('recipe-modal')) closeModal();
+}
+
+function copyAffLink() {
+  const link = document.getElementById('aff-link').textContent;
+  navigator.clipboard.writeText(link).then(() => showToast('Đã sao chép link!'));
+}
+
+function shareTo(platform) {
+  const link = document.getElementById('aff-link').textContent;
+  if(platform === 'facebook') {
+    window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(link), '_blank');
+  } else if(platform === 'zalo') {
+    window.open('https://zalo.me/share?url='+encodeURIComponent(link), '_blank');
+  } else {
+    navigator.clipboard.writeText(link).then(() => showToast('Đã sao chép link!'));
+  }
+}
+
+function setRating(n) {
+  currentRating = n;
+  document.querySelectorAll('.star-btn').forEach((btn, i) => {
+    btn.classList.toggle('lit', i < n);
+  });
+}
+
+function submitReview() {
+  const name = document.getElementById('rev-name').value.trim();
+  const content = document.getElementById('rev-content').value.trim();
+  if(!name || !content) { showToast('Vui lòng điền đầy đủ thông tin!'); return; }
+  if(!currentRating) { showToast('Vui lòng chọn số sao!'); return; }
+  const today = new Date();
+  const d = `${String(today.getDate()).padStart(2,'0')}/${String(today.getMonth()+1).padStart(2,'0')}/${today.getFullYear()}`;
+  reviews.unshift({name, date:d, rating:currentRating, text:content});
+  renderReviews();
+  document.getElementById('rev-name').value = '';
+  document.getElementById('rev-content').value = '';
+  currentRating = 0;
+  setRating(0);
+  showToast('Cảm ơn phản hồi của bạn!');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ========================= INIT =========================
+renderTodayMenu();
+renderRecipes('all');
+renderReviews();
+</script>
+</body>
+</html>
