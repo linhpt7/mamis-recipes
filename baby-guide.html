@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cẩm Nang Nuôi Bé 0–12 Tháng – Mami's Recipes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#faf7f2;--warm:#fff9f4;--blush:#f5ddd5;--rose:#e8a898;
+  --terra:#c97058;--terra-d:#a85840;--deep:#2d1f1a;--muted:#8a6e67;
+  --sage:#8aab8a;--sage-l:#d4e8d4;--sky:#6fa8c8;--sky-l:#e4f1f8;
+  --gold:#c8963a;--gold-l:#fdf3e0;--gold-p:#fff8ed;
+  --lav:#9a80c8;--lav-l:#ede8f8;
+  --r:18px;--sh:0 2px 20px rgba(0,0,0,.07);--shh:0 8px 32px rgba(0,0,0,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden}
+
+nav{background:rgba(250,248,245,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #D9D3C9;position:sticky;top:0;z-index:200;padding:0 5%}
+.ni{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nl a{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:#3D3831;text-decoration:none;letter-spacing:.01em}
+.nl a span{color:#6B5D4F}
+.nr{display:flex;align-items:center;gap:2rem}
+.nr a{font-size:.82rem;font-weight:400;color:#7A7167;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.nr a:hover,.nr a.active{color:#6B5D4F}
+.nr .nc{background:#6B5D4F;color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:.78rem;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s;text-decoration:none}
+.nr .nc:hover{background:#3D3831;transform:translateY(-1px)}
+
+.hero{background:linear-gradient(150deg,var(--blush) 0%,var(--warm) 55%,var(--sage-l) 100%);padding:3.5rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 75% 25%,rgba(138,171,138,.1) 0%,transparent 55%),radial-gradient(circle at 25% 75%,rgba(232,168,152,.12) 0%,transparent 50%)}
+.hbadge{display:inline-block;background:var(--terra);color:white;padding:4px 16px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.25;margin-bottom:.9rem}
+.hero h1 em{color:var(--terra);font-style:italic}
+.hero p{color:var(--muted);max-width:520px;margin:0 auto 2rem;font-size:.95rem;line-height:1.75}
+.htabs{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+
+.tbtn{display:flex;align-items:center;gap:7px;padding:9px 20px;border-radius:40px;border:2px solid transparent;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:600;transition:all .22s;white-space:nowrap;background:white}
+.tbtn[data-tab=schedule]{border-color:var(--gold);color:var(--gold);background:var(--gold-p)}
+.tbtn[data-tab=milestones]{border-color:var(--sky);color:var(--sky);background:var(--sky-l)}
+.tbtn[data-tab=toys]{border-color:var(--lav);color:var(--lav);background:var(--lav-l)}
+.tbtn[data-tab=food]{border-color:var(--rose);color:var(--terra);background:var(--blush)}
+.tbtn.active,.tbtn:hover{filter:brightness(.9) saturate(1.2);transform:translateY(-2px);box-shadow:0 4px 18px rgba(0,0,0,.12)}
+
+.cont{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 3rem}
+.tp{display:none;animation:fu .3s ease}
+.tp.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.st{font-family:'Playfair Display',serif;font-size:1.65rem;margin-bottom:.4rem}
+.st em{color:var(--terra);font-style:italic}
+.ss{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;max-width:680px}
+
+/* ── DROPDOWN SELECTOR ── */
+.sel-wrap{margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.sel-label{font-size:.85rem;font-weight:600;color:var(--muted);white-space:nowrap}
+.dropdown{appearance:none;-webkit-appearance:none;
+  padding:10px 40px 10px 16px;border-radius:12px;border:2px solid;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;
+  cursor:pointer;background-color:white;background-repeat:no-repeat;
+  background-position:right 12px center;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238a6e67' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  transition:all .2s;min-width:220px;
+}
+.dropdown:focus{outline:none}
+.dropdown.gold{border-color:var(--gold);color:var(--deep)}
+.dropdown.gold:focus,.dropdown.gold:hover{border-color:var(--terra);box-shadow:0 0 0 3px rgba(200,150,58,.15)}
+.dropdown.sky{border-color:var(--sky);color:var(--deep)}
+.dropdown.sky:focus,.dropdown.sky:hover{border-color:var(--sky);box-shadow:0 0 0 3px rgba(111,168,200,.15)}
+.dropdown.lav{border-color:var(--lav);color:var(--deep)}
+.dropdown.lav:focus,.dropdown.lav:hover{border-color:var(--lav);box-shadow:0 0 0 3px rgba(154,128,200,.15)}
+
+/* ── WW TOOL ── */
+.ww-tool{background:linear-gradient(135deg,#1a1230,#2d1f4a);border-radius:22px;padding:2rem 2rem 1.8rem;margin-bottom:1.5rem}
+.ww-tool h3{font-family:'Playfair Display',serif;color:white;font-size:1.2rem;margin-bottom:.3rem}
+.ww-tool .wtag{font-size:.75rem;color:rgba(154,128,200,.9);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;display:block}
+.ww-input-row{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.ww-input-row label{font-size:.83rem;color:rgba(255,255,255,.75);white-space:nowrap}
+.ww-input{padding:9px 14px;border-radius:10px;border:2px solid rgba(154,128,200,.4);
+  background:rgba(255,255,255,.07);color:white;font-family:'DM Sans',sans-serif;
+  font-size:.88rem;font-weight:600;width:160px}
+.ww-input:focus{outline:none;border-color:var(--lav);background:rgba(255,255,255,.1)}
+.ww-input::placeholder{color:rgba(255,255,255,.3);font-weight:400}
+.ww-btn{padding:9px 22px;border-radius:10px;background:var(--lav);color:white;
+  border:none;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;
+  cursor:pointer;transition:all .2s}
+.ww-btn:hover{background:#7a62b8;transform:translateY(-1px)}
+.ww-result{display:none;border-radius:14px;padding:1.2rem 1.4rem;margin-top:.2rem}
+.ww-result.active{display:block}
+.ww-ok{background:rgba(138,171,138,.15);border:1px solid rgba(138,171,138,.35)}
+.ww-on{background:rgba(255,180,50,.12);border:1px solid rgba(255,180,50,.35)}
+.ww-result-title{font-weight:700;font-size:.92rem;margin-bottom:.5rem}
+.ww-ok .ww-result-title{color:#a8dba8}
+.ww-on .ww-result-title{color:#ffd070}
+.ww-result-body{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.8)}
+.ww-tips{margin-top:.8rem;display:flex;flex-direction:column;gap:.35rem}
+.ww-tip-item{display:flex;align-items:flex-start;gap:7px;font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.55}
+.ww-tip-item::before{content:'→';flex-shrink:0;color:var(--lav)}
+
+/* ── SCHEDULE CARD ── */
+.sc{background:var(--warm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.sh{background:linear-gradient(135deg,var(--gold) 0%,#b07828 100%);padding:1.4rem 1.8rem;color:white;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
+.sh-l h3{font-family:'Playfair Display',serif;font-size:1.2rem}
+.sh-l p{font-size:.84rem;opacity:.9;margin-top:3px}
+.sbadges{display:flex;flex-wrap:wrap;gap:.5rem}
+.sbadge{background:rgba(255,255,255,.22);border-radius:10px;padding:5px 12px;font-size:.75rem;font-weight:600;white-space:nowrap}
+.stl{padding:1.2rem 1.8rem}
+.sbl{display:flex;gap:1.2rem;margin-bottom:.9rem;align-items:flex-start}
+.stm{min-width:74px;font-weight:700;color:var(--gold);font-size:.8rem;padding-top:3px;flex-shrink:0}
+.sbody{flex:1;padding-bottom:.9rem;border-bottom:1px dashed rgba(0,0,0,.08)}
+.sbl:last-child .sbody{border-bottom:none}
+.stitle{font-weight:600;font-size:.9rem;margin-bottom:3px}
+.sdesc{color:var(--muted);font-size:.81rem;line-height:1.6}
+.stip{background:var(--gold-p);border-left:3px solid var(--gold);padding:.9rem 1.4rem;margin:0 1.8rem 1.8rem;border-radius:0 12px 12px 0;font-size:.83rem;color:#6a4800;line-height:1.65}
+
+/* ── MILESTONE SINGLE CARD ── */
+.ms-single{background:var(--warm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.ms-single-hdr{background:linear-gradient(135deg,var(--sky) 0%,#4a88a8 100%);padding:1.4rem 1.8rem;color:white;display:flex;align-items:center;gap:1.2rem}
+.ms-num{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.ms-num .n{font-size:1.6rem;font-weight:800;line-height:1}
+.ms-num .l{font-size:.55rem;font-weight:700;letter-spacing:.5px}
+.ms-single-title{font-family:'Playfair Display',serif;font-size:1.2rem}
+.ms-single-sub{font-size:.84rem;opacity:.9;margin-top:3px}
+.ms-body2{padding:1.4rem 1.8rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem}
+.ms-col h4{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;display:flex;align-items:center;gap:6px}
+.ms-col h4::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.07)}
+.ms-list{display:flex;flex-direction:column;gap:5px}
+.ms-item{display:flex;align-items:flex-start;gap:7px;font-size:.82rem;line-height:1.5}
+.ms-item::before{content:'✓';color:var(--sage);font-weight:800;flex-shrink:0;font-size:.78rem;margin-top:1px}
+.ms-warn2{background:#fff5e8;border-radius:10px;padding:10px 14px;font-size:.79rem;color:#7a4e00;margin:0 1.8rem 1.8rem;display:flex;gap:8px;line-height:1.55}
+
+/* ── TOYS ── */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem}
+.tc{background:var(--warm);border-radius:var(--r);padding:1.4rem;box-shadow:var(--sh);display:flex;flex-direction:column;gap:.9rem;transition:transform .2s}
+.tc:hover{transform:translateY(-3px)}
+.te{font-size:2.2rem}
+.tn{font-weight:700;font-size:.95rem}
+.td{color:var(--muted);font-size:.81rem;line-height:1.65}
+.tskills{display:flex;flex-wrap:wrap;gap:5px}
+.tsk{background:var(--lav-l);color:var(--lav);padding:3px 9px;border-radius:10px;font-size:.72rem;font-weight:600}
+.tbuy{display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#ee4d2d,#d43f1e);color:white;padding:10px;border-radius:12px;text-decoration:none;font-weight:700;font-size:.83rem;margin-top:auto;transition:opacity .2s}
+.tbuy:hover{opacity:.88}
+
+/* ── FOOD ── */
+.fhero{background:linear-gradient(135deg,var(--blush),var(--warm));border-radius:24px;padding:4rem 2rem;text-align:center}
+.fhero h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:.9rem}
+.fhero h2 em{color:var(--terra)}
+.fhero p{color:var(--muted);max-width:460px;margin:0 auto 2.2rem;line-height:1.8;font-size:.93rem}
+.ctabtn{display:inline-flex;align-items:center;gap:8px;background:var(--terra);color:white;padding:14px 34px;border-radius:40px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .2s;box-shadow:0 4px 20px rgba(201,112,88,.28)}
+.ctabtn:hover{background:var(--terra-d);transform:translateY(-2px)}
+
+/* ── AFFILIATE ── */
+.aff{background:linear-gradient(135deg,#2d1f1a,#4a2f28);border-radius:22px;padding:2.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.4rem;margin:2.5rem 0}
+.aff h3{font-family:'Playfair Display',serif;color:white;font-size:1.25rem;margin-bottom:.4rem}
+.aff p{color:rgba(255,255,255,.7);font-size:.84rem;max-width:380px;line-height:1.65}
+.affbtn{display:inline-flex;align-items:center;gap:7px;background:var(--rose);color:white;padding:11px 26px;border-radius:28px;font-weight:700;text-decoration:none;font-size:.88rem;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.affbtn:hover{background:var(--terra);transform:translateY(-1px)}
+
+.pf{text-align:center;padding:2rem 1rem 3rem;color:var(--muted);font-size:.84rem}
+.pf a{color:var(--terra);text-decoration:none;font-weight:600}
+
+@media(max-width:640px){
+  .nr a{padding:4px 7px;font-size:.73rem}
+  .cont{padding:1.5rem 1rem 2rem}
+  .stl,.sh,.ms-body2{padding:1rem}
+  .ms-warn2{margin:0 1rem 1rem}
+  .stip{margin:0 1rem 1.2rem}
+  .aff{flex-direction:column}
+  .htabs{gap:.4rem}
+  .tbtn{padding:8px 14px;font-size:.78rem}
+  .dropdown{min-width:180px}
+  .ww-input{width:140px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="ni">
+    <div class="nl"><a href="./index.html">Mami's <span>Recipes</span></a></div>
+    <div class="nr">
+      <a href="./index.html#thuc-don">Thực Đơn</a>
+      <a href="./index.html#cong-thuc">Công Thức</a>
+      <a href="#" class="active" onclick="return false">📅 Cẩm Nang Bé</a>
+      <a href="https://beacons.ai/linhpt74" target="_blank" class="nc">Mua Đồ Cho Bé</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hbadge">✨ Cẩm Nang Nuôi Bé 0–12 Tháng</div>
+  <h1>Hành trình <em>đầu đời</em> của bé<br>cùng Mẹ Em Gạo</h1>
+  <p>Lịch sinh hoạt chi tiết từng tháng, mốc phát triển, kiểm tra Wonder Week và gợi ý đồ chơi — tổng hợp từ kinh nghiệm thực tế với bé Gạo.</p>
+  <div class="htabs">
+    <button class="tbtn active" data-tab="schedule" onclick="sw('schedule')">☀️ Lịch Sinh Hoạt</button>
+    <button class="tbtn" data-tab="milestones" onclick="sw('milestones')">📊 Mốc Phát Triển</button>
+    <button class="tbtn" data-tab="toys" onclick="sw('toys')">🧸 Gợi Ý Đồ Chơi</button>
+    <button class="tbtn" data-tab="food" onclick="sw('food')">🥣 Thực Đơn Ăn Dặm</button>
+  </div>
+</div>
+
+<div class="cont">
+
+  <!-- ═══ SCHEDULE ═══ -->
+  <div class="tp active" id="panel-schedule">
+    <h2 class="st">Lịch sinh hoạt <em>Easy</em> từng tháng</h2>
+    <p class="ss">Khung giờ linh hoạt, phản ánh đúng sự thay đổi số cữ bú và giấc ngủ từng tháng.</p>
+
+    <!-- WW TOOL -->
+    <div class="ww-tool">
+      <h3>🌀 Kiểm tra Wonder Week</h3>
+      <span class="wtag">Công cụ tính tuần tuổi & dự đoán giai đoạn leap</span>
+      <div class="ww-input-row">
+        <label>Ngày dự sinh (hoặc ngày sinh):</label>
+        <input type="date" class="ww-input" id="wwDate" placeholder="dd/mm/yyyy">
+        <button class="ww-btn" onclick="checkWW()">Kiểm tra →</button>
+      </div>
+      <div class="ww-result" id="wwResult"></div>
+    </div>
+
+    <!-- DROPDOWN -->
+    <div class="sel-wrap">
+      <span class="sel-label">☀️ Chọn tháng tuổi của bé:</span>
+      <select class="dropdown gold" id="sDrop" onchange="renderS(+this.value)">
+        <option value="">— Chọn tháng tuổi —</option>
+        <option value="0">Sơ sinh (0 tháng)</option>
+        <option value="1">Tháng 1</option>
+        <option value="2">Tháng 2</option>
+        <option value="3">Tháng 3</option>
+        <option value="4">Tháng 4</option>
+        <option value="5">Tháng 5</option>
+        <option value="6">Tháng 6</option>
+        <option value="7">Tháng 7</option>
+        <option value="8">Tháng 8</option>
+        <option value="9">Tháng 9</option>
+        <option value="10">Tháng 10</option>
+        <option value="11">Tháng 11</option>
+        <option value="12">Tháng 12 🎂</option>
+      </select>
+    </div>
+    <div id="scont"></div>
+
+    <div class="aff">
+      <div><h3>🌙 Hỗ trợ giấc ngủ cho bé</h3><p>Túi ngủ, máy tiếng ồn trắng, đèn ngủ dim — những sản phẩm Thùy Linh tin dùng cho bé Gạo.</p></div>
+      <a href="https://beacons.ai/linhpt74" target="_blank" class="affbtn">🛒 Xem sản phẩm giấc ngủ →</a>
+    </div>
+  </div>
+
+  <!-- ═══ MILESTONES ═══ -->
+  <div class="tp" id="panel-milestones">
+    <h2 class="st">Mốc phát triển <em>theo tháng</em></h2>
+    <p class="ss">Tham khảo mốc phổ biến — mỗi bé có nhịp riêng. Nếu bé chưa đạt vài mốc, hãy hỏi bác sĩ nhi để được tư vấn.</p>
+    <div class="sel-wrap">
+      <span class="sel-label">📊 Chọn tháng tuổi của bé:</span>
+      <select class="dropdown sky" id="mDrop" onchange="renderM(+this.value)">
+        <option value="">— Chọn tháng tuổi —</option>
+        <option value="1">Tháng 1</option>
+        <option value="2">Tháng 2</option>
+        <option value="3">Tháng 3</option>
+        <option value="4">Tháng 4</option>
+        <option value="5">Tháng 5</option>
+        <option value="6">Tháng 6</option>
+        <option value="7">Tháng 7</option>
+        <option value="8">Tháng 8</option>
+        <option value="9">Tháng 9</option>
+        <option value="10">Tháng 10</option>
+        <option value="11">Tháng 11</option>
+        <option value="12">Tháng 12 🎂</option>
+      </select>
+    </div>
+    <div id="mcont"></div>
+    <div class="aff">
+      <div><h3>📚 Kích thích phát triển não bộ</h3><p>Sách cảm quan, thẻ tương phản, đồ chơi xúc giác — hỗ trợ đúng từng mốc phát triển.</p></div>
+      <a href="https://beacons.ai/linhpt74" target="_blank" class="affbtn">🛒 Xem sản phẩm kích thích não bộ →</a>
+    </div>
+  </div>
+
+  <!-- ═══ TOYS ═══ -->
+  <div class="tp" id="panel-toys">
+    <h2 class="st">Gợi ý <em>đồ chơi</em> phù hợp lứa tuổi</h2>
+    <p class="ss">Đồ chơi đúng độ tuổi giúp bé vừa vui vừa phát triển đúng hướng.</p>
+    <div class="sel-wrap">
+      <span class="sel-label">🧸 Chọn giai đoạn:</span>
+      <select class="dropdown lav" id="tDrop" onchange="renderT(this.value)">
+        <option value="0-3">0–3 tháng</option>
+        <option value="4-6">4–6 tháng</option>
+        <option value="7-9">7–9 tháng</option>
+        <option value="10-12">10–12 tháng</option>
+      </select>
+    </div>
+    <div class="tgrid" id="tgrid"></div>
+    <div class="aff">
+      <div><h3>🧸 Tất cả đồ chơi Thùy Linh tin dùng</h3><p>Chọn lọc kỹ — an toàn, phù hợp lứa tuổi, giá tốt. Tổng hợp đầy đủ tại beacons.ai.</p></div>
+      <a href="https://beacons.ai/linhpt74" target="_blank" class="affbtn">🛒 Xem tất cả đồ chơi →</a>
+    </div>
+  </div>
+
+  <!-- ═══ FOOD ═══ -->
+  <div class="tp" id="panel-food">
+    <div class="fhero">
+      <h2>Thực Đơn <em>Ăn Dặm</em><br>Của Mẹ Em Gạo</h2>
+      <p>Công thức từ 6 tháng tuổi — truyền thống &amp; BLW — được Thùy Linh tổng hợp từ kinh nghiệm thực tế nuôi bé Gạo. Bấm để xem toàn bộ công thức theo từng tháng tuổi.</p>
+      <a href="./index.html" class="ctabtn">🥣 Xem Toàn Bộ Công Thức Ăn Dặm →</a>
+    </div>
+    <div class="aff">
+      <div><h3>🍳 Dụng cụ ăn dặm cho bé</h3><p>Bát thìa an toàn, máy xay, khay BLW chống trượt — những thứ Thùy Linh không thể thiếu mỗi ngày.</p></div>
+      <a href="https://beacons.ai/linhpt74" target="_blank" class="affbtn">🛒 Xem dụng cụ ăn dặm →</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="pf">
+  <a href="./index.html">← Thực Đơn Ăn Dặm</a>
+  &nbsp;·&nbsp;
+  Mami's Recipes by <a href="https://beacons.ai/linhpt74" target="_blank">Thùy Linh – Mẹ Em Gạo</a>
+  &nbsp;·&nbsp;
+  <span style="color:#A89F93">© 2026</span>
+</div>
+
+<script>
+/* ══════════ SCHEDULE DATA ══════════ */
+const S={
+  0:{label:"Sơ sinh (0 tháng)",tagline:"Làm quen với thế giới",badges:["😴 Ngủ 16–20h/ngày","🤱 Bú 8–12 lần/ngày","⏰ Chưa có nhịp sinh học"],tip:"💡 Bé sơ sinh chưa phân biệt ngày/đêm. Không cần lịch cứng — chỉ cần bú theo nhu cầu (on-demand). Nhiệm vụ của mẹ lúc này là nghỉ ngơi cùng bé. Đừng áp lực lịch sinh hoạt.",blocks:[
+    {t:"Bất kỳ",i:"🌅",ti:"Bú theo nhu cầu (on-demand)",d:"Bú mẹ hoặc 60–90ml sữa CT. Sơ sinh bú mỗi 1.5–3 tiếng, ngày và đêm đều như nhau."},
+    {t:"~30' sau bú",i:"😴",ti:"Ngủ ngay sau bú",d:"Bé sơ sinh chỉ thức 45–60 phút mỗi lần. Dấu hiệu buồn ngủ: ngáp, dụi mắt, nhìn xa."},
+    {t:"Lặp lại",i:"🔄",ti:"Chu kỳ Bú → Chơi nhẹ → Ngủ",d:"Lặp lại suốt ngày đêm. Mỗi chu kỳ ~2–3 tiếng. Ban đêm không bật đèn sáng."},
+    {t:"Ngày",i:"🌞",ti:"Tummy time mini",d:"2–5 phút trên ngực mẹ hoặc thảm mềm. Bắt đầu ngay từ tuần đầu nếu bé khỏe."},
+    {t:"Tối",i:"🛁",ti:"Tắm & Routine nhẹ",d:"Nước ấm 37°C. Massage nhẹ sau tắm. Giảm kích thích: nói nhỏ, đèn mờ — gợi ý 'giờ ngủ đêm'."},
+    {t:"Đêm",i:"🌙",ti:"Bú đêm (2–4 lần)",d:"Hoàn toàn bình thường. Cho bú trong phòng tối, không nói chuyện nhiều. Bé dần học ngày/đêm."},
+  ]},
+  1:{label:"Tháng 1",tagline:"Nhận ra giọng mẹ & nụ cười đầu tiên",badges:["😴 Ngủ 15–18h/ngày","🤱 Bú 7–10 lần/ngày","⏰ Thức 45–60'/lần"],tip:"💡 Cửa sổ thức (wake window) tháng 1 rất ngắn: 45–60 phút. Quan sát dấu hiệu mệt để đặt bé ngủ đúng lúc — tránh overtired. Bắt đầu thấy routine nhẹ hình thành.",blocks:[
+    {t:"6:30",i:"🌅",ti:"Thức & Bú cữ 1",d:"Bú mẹ hoặc 80–100ml. Ánh sáng tự nhiên giúp bé dần học phân biệt ngày."},
+    {t:"7:45–9:15",i:"😴",ti:"Giấc ngủ 1",d:"Sau 45–60' thức, bé có dấu hiệu mệt. Đặt bé ngủ, phòng mờ, tiếng ồn trắng."},
+    {t:"9:15",i:"🤱",ti:"Bú cữ 2 & Tummy time",d:"Tummy time 5' trên thảm. Nói chuyện nhẹ nhàng, nhìn vào mắt bé."},
+    {t:"10:15–11:45",i:"😴",ti:"Giấc ngủ 2",d:"Chu kỳ giấc ~45'. Bé có thể dậy giữa giấc — tiếng ồn trắng giúp ngủ lại."},
+    {t:"11:45",i:"🤱",ti:"Bú cữ 3 & Tương tác",d:"Bú no. Nhìn mặt mẹ, nghe tiếng mẹ hát — đây là tương tác quan trọng nhất."},
+    {t:"12:45–14:15",i:"😴",ti:"Giấc trưa",d:"Tiếp tục chu kỳ. Có thể dùng tiếng ồn trắng để bé ngủ dài hơn."},
+    {t:"14:15",i:"🤱",ti:"Bú cữ 4",d:"Bú mẹ/sữa CT. Có thêm 1–2 cữ chiều tùy nhu cầu bé."},
+    {t:"15:00–16:30",i:"😴",ti:"Giấc chiều",d:"Bé hay quấy 16–18h (witching hour). Địu, đung đưa nhẹ giúp bé dễ chịu."},
+    {t:"17:30",i:"🤱",ti:"Cluster feed chiều tối",d:"Bú dồn nhiều cữ gần nhau vào chiều tối — bình thường và giúp bé ngủ dài hơn ban đêm."},
+    {t:"18:30–19:00",i:"🛁",ti:"Tắm & Routine ngủ đêm",d:"Tắm ấm → Massage → Mặc đồ ngủ → Bú no → Ngủ. Duy trì thứ tự này mỗi tối."},
+    {t:"19:00–19:30",i:"🌙",ti:"Ngủ đêm",d:"Thức 2–3 lần/đêm. Hoàn toàn bình thường ở tháng 1."},
+  ]},
+  2:{label:"Tháng 2",tagline:"Nụ cười xã hội đầu tiên 😄",badges:["😴 Ngủ 15–17h/ngày","🤱 Bú 6–8 lần/ngày","⏰ Thức 60–75'/lần"],tip:"💡 Tháng 2 bé bắt đầu mỉm cười có chủ đích khi nhìn thấy mặt mẹ — đây là cột mốc tuyệt vời! Cửa sổ thức tăng lên 60–75'. Nhịp sinh hoạt đang dần hình thành.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú cữ sáng",d:"Bú mẹ/100–120ml. Giờ thức sáng ổn định giúp thiết lập nhịp sinh học."},
+    {t:"8:15–9:45",i:"😴",ti:"Giấc sáng 1",d:"Sau 1–1.5h thức. Đặt bé khi còn drowsy but awake. Bé bắt đầu ngủ dài hơn 45'."},
+    {t:"9:45",i:"🤱",ti:"Bú cữ 2 & Tương tác",d:"Mỉm cười với bé — bé sẽ cố bắt chước. Tummy time 5–7'."},
+    {t:"11:00–12:30",i:"😴",ti:"Giấc sáng 2",d:"Bé tháng 2 vẫn cần 4–5 giấc/ngày. Không cần cố gộp giấc."},
+    {t:"12:30",i:"🤱",ti:"Bú cữ trưa",d:"Khoảng cách cữ bú đang tăng từ 2h lên 2.5–3h."},
+    {t:"13:30–15:00",i:"😴",ti:"Giấc trưa",d:"Giấc dài nhất trong ngày, cố giữ 1.5–2h. Phòng tối, mát."},
+    {t:"15:00",i:"🤱",ti:"Bú cữ chiều",d:"Play gym, lắc lục lạc, nhìn gương — thời gian chơi tốt nhất."},
+    {t:"16:00–17:00",i:"😴",ti:"Giấc chiều ngắn",d:"30–45'. Vẫn cần giấc này để không overtired trước giờ ngủ đêm."},
+    {t:"17:30 & 19:00",i:"🤱",ti:"Cluster feed (bú dồn)",d:"Bú 2 cữ gần nhau để nạp năng lượng cho giấc đêm dài."},
+    {t:"19:00–19:30",i:"🛁",ti:"Tắm & Routine",d:"Tắm → Massage → Mặc đồ → Bú lần cuối → Ngủ. Mỗi bước 5–7'."},
+    {t:"19:30",i:"🌙",ti:"Ngủ đêm",d:"Bé tháng 2 có thể ngủ 4–5h liên tục. Thức 1–2 lần sau đó."},
+  ]},
+  3:{label:"Tháng 3",tagline:"Cười khanh khách & khám phá bàn tay",badges:["😴 Ngủ 14–16h/ngày","🤱 Bú 5–7 lần/ngày","⏰ Thức 75–90'/lần","⚠️ Wonder Week 12"],tip:"💡 Tháng 3 thường có Wonder Week 12 (tuần 11–12): bé quấy hơn, bú dồn nhiều hơn, ngủ kém hơn 1–2 tuần. Sau đó bé sẽ đạt bước phát triển mới. Kiên nhẫn — đây sẽ qua!",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú cữ 1",d:"Bú mẹ/120ml. Tummy time 7–10' — bé bắt đầu chống tay thẳng."},
+    {t:"8:30–10:00",i:"😴",ti:"Giấc sáng",d:"Sau 1.5h thức. Bé tháng 3 bắt đầu ngủ 1–1.5h/giấc."},
+    {t:"10:00",i:"🎵",ti:"Bú cữ 2 & Chơi",d:"Thời gian bé alert nhất. Nhìn gương, theo dõi đồ vật — bé cười khanh khách!"},
+    {t:"11:30–13:00",i:"😴",ti:"Giấc trưa sớm",d:"Cố giữ phòng tối. Bé đang dần hình thành giấc trưa dài hơn."},
+    {t:"13:00",i:"🤱",ti:"Bú cữ 3",d:"Bú no. Nói chuyện, cù bé — bé sẽ cười to khanh khách."},
+    {t:"14:30–16:00",i:"😴",ti:"Giấc chiều",d:"Cố giữ 1–1.5h. Quan trọng để bé không overtired chiều."},
+    {t:"16:00",i:"🤱",ti:"Bú cữ 4 & Ra ngoài",d:"Đi dạo ngoài trời. Không khí và ánh sáng tự nhiên rất tốt cho bé."},
+    {t:"17:00–17:45",i:"😴",ti:"Cap nap chiều (30–45')",d:"Kết thúc trước 18:00. Bé hay quấy 17–19h (witching hour)."},
+    {t:"18:00 & 18:45",i:"🤱",ti:"Cluster feed trước ngủ",d:"Bú dồn 2 lần trước khi tắm để nạp đủ năng lượng."},
+    {t:"18:30–19:00",i:"🛁",ti:"Tắm & Routine",d:"Bắt đầu hát ru/lullaby nhất quán mỗi tối — bé sẽ liên kết với giờ ngủ."},
+    {t:"19:00–19:30",i:"🌙",ti:"Ngủ đêm",d:"Nhiều bé tháng 3 ngủ 5–6h liên tục. Dream feed lúc 22h giúp kéo dài giấc."},
+  ]},
+  4:{label:"Tháng 4",tagline:"Lật & sleep regression 4 tháng ⚠️",badges:["😴 Ngủ 14–16h/ngày","🤱 Bú 5–6 lần/ngày","⏰ Thức 90–120'/lần","⚠️ Sleep regression!"],tip:"💡 Sleep regression 4 tháng: não bé thay đổi cấu trúc giấc ngủ VĨNH VIỄN (giống người lớn hơn). Bé ngủ kém hơn là KHÔNG THỂ TRÁNH. Hãy duy trì routine nhất quán — đây là giai đoạn cần sự kiên nhẫn nhất của mẹ.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú cữ 1",d:"Bú mẹ/120–150ml. Cửa sổ thức sáng 1.5–2h. Tummy time 10–15'."},
+    {t:"9:00–10:30",i:"😴",ti:"Giấc sáng",d:"Sau 2h thức. Bé tháng 4 đang học lật — có thể lật trong nôi và tự thức giữa giấc."},
+    {t:"10:30",i:"🧸",ti:"Bú cữ 2 & Khám phá",d:"Bé với tay đồ vật, đưa vào miệng. Play gym. Bắt đầu hiểu nguyên nhân–kết quả."},
+    {t:"12:00–13:30",i:"😴",ti:"Giấc trưa",d:"Cố 1.5h. Phòng tối, tiếng ồn trắng. Bé có thể dậy sau 45' — sleep cycle connection."},
+    {t:"13:30",i:"🤱",ti:"Bú cữ 3",d:"Bú no. Thường là thời điểm bé tỉnh táo và ngoan nhất trong ngày."},
+    {t:"15:00–16:00",i:"😴",ti:"Giấc chiều",d:"Cố 1h. Một số bé bắt đầu bỏ 1 giấc trong giai đoạn này."},
+    {t:"16:00",i:"🤱",ti:"Bú cữ 4 & Ra ngoài",d:"Đi dạo 20–30'. Ánh sáng chiều giúp điều chỉnh nhịp sinh học."},
+    {t:"17:30–18:00",i:"😴",ti:"Cap nap (30')",d:"Bỏ nếu bé không muốn. Kết thúc trước 18:30."},
+    {t:"18:15",i:"🤱",ti:"Bú cữ 5",d:"Bú no trước tắm."},
+    {t:"18:30–19:00",i:"🛁",ti:"Tắm & Routine",d:"Tắm → Mặc đồ → Bú → Đọc sách → Lullaby → Ngủ. Routine ổn định = chìa khóa qua regression."},
+    {t:"19:00–19:30",i:"🌙",ti:"Ngủ đêm",d:"Regression: bé thức nhiều hơn bình thường. Respond với tình yêu thương, không cần CIO ở tháng 4."},
+  ]},
+  5:{label:"Tháng 5",tagline:"Ngồi có đỡ & bi bô sôi nổi",badges:["😴 Ngủ 14–15h/ngày","🤱 Bú 4–5 lần/ngày","⏰ Thức 2–2.5h/lần","3–4 giấc ngày"],tip:"💡 Tháng 5 bé chuyển từ 4 giấc xuống 3 giấc — quá trình tự nhiên 2–4 tuần. Theo dõi tín hiệu mệt của bé thay vì tuân theo lịch cứng nhắc. Wonder Week 26 thường ở tuần 22–26.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú cữ 1",d:"Bú mẹ/150ml. Tummy time 10–15', bé bắt đầu chống tay thẳng đẹp."},
+    {t:"9:00–10:30",i:"😴",ti:"Giấc sáng 1",d:"Sau 2h thức. Cố 1–1.5h. Tiếng ồn trắng vẫn hữu ích."},
+    {t:"10:30",i:"🧸",ti:"Bú cữ 2 & Chơi tích cực",d:"Thời gian bé alert nhất. Play gym, khối mềm, gương. Luyện ngồi có gối đỡ."},
+    {t:"12:30–14:00",i:"😴",ti:"Giấc trưa dài",d:"Cố 1.5–2h. Giấc phục hồi quan trọng nhất trong ngày."},
+    {t:"14:00",i:"🤱",ti:"Bú cữ 3",d:"Bú no. Massage nhẹ. Tập ngồi có đỡ thêm 5–10'."},
+    {t:"15:30–16:30",i:"😴",ti:"Giấc chiều",d:"45–60'. Một số ngày bé từ chối nếu đã có 2 giấc dài."},
+    {t:"16:30",i:"🤱",ti:"Bú cữ 4 & Ra ngoài",d:"Đi dạo 20' nếu được. Ánh sáng tự nhiên rất tốt."},
+    {t:"17:30–18:00",i:"😴",ti:"Cap nap (20–30', tùy bé)",d:"Bỏ nếu đang chuyển sang 3 giấc."},
+    {t:"18:00",i:"🤱",ti:"Bú cữ 5",d:"Bú trước tắm."},
+    {t:"18:30–19:00",i:"🛁",ti:"Tắm & Routine",d:"Bắt đầu đọc sách cố định mỗi đêm — thói quen đọc sách từ sớm rất có lợi."},
+    {t:"19:00–19:30",i:"🌙",ti:"Ngủ đêm",d:"Nhiều bé tháng 5 ngủ 8–10h liên tục nếu đã qua regression 4 tháng."},
+  ]},
+  6:{label:"Tháng 6",tagline:"Bắt đầu ăn dặm 🥣 & ngồi vững",badges:["😴 Ngủ 13–15h/ngày","🤱 Bú 4 lần/ngày","⏰ Thức 2–2.5h/lần","3 giấc","🥣 Ăn dặm!"],tip:"💡 THÁNG 6 là cột mốc ăn dặm! Bú sữa vẫn là dinh dưỡng chính — ăn dặm chỉ là 'tập ăn'. Bắt đầu 1–2 thìa bột loãng, 1 lần/ngày, sau cữ bú sáng.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú cữ 1",d:"Bú TRƯỚC ăn dặm 30'. Sữa vẫn là dinh dưỡng chính — không để ăn dặm thay thế."},
+    {t:"8:00",i:"🥣",ti:"Bữa ăn dặm sáng (mới bắt đầu)",d:"1–2 thìa bột gạo loãng hoặc rau củ xay. Bé nhổ ra là bình thường!"},
+    {t:"8:30–10:00",i:"😴",ti:"Giấc sáng",d:"Sau 2–2.5h thức. Cố 1–1.5h."},
+    {t:"10:00",i:"🤱",ti:"Bú cữ 2 & Chơi",d:"Tummy time, ngồi có đỡ. Bé đang học bò — đặt đồ chơi xa để khuyến khích."},
+    {t:"12:00–13:30",i:"😴",ti:"Giấc trưa dài",d:"Giấc quan trọng nhất, cố 1.5h+. Phòng tối, mát."},
+    {t:"13:30",i:"🤱",ti:"Bú cữ 3",d:"Từ tuần 2–3, có thể thêm bữa ăn dặm trưa nhỏ sau khi bú."},
+    {t:"15:00–15:45",i:"😴",ti:"Giấc chiều",d:"45–60'. Kết thúc trước 16:30."},
+    {t:"16:00",i:"🤱",ti:"Bú cữ 4",d:"Tập ngồi vững, chơi peek-a-boo."},
+    {t:"17:30",i:"🥣",ti:"Ăn dặm chiều (tuần 3–4)",d:"Trái cây mềm xay: chuối, bơ, đu đủ. Thêm sau khi bé quen với bột/rau."},
+    {t:"18:30–19:00",i:"🛁",ti:"Tắm & Routine",d:"Tắm → Bú no → Đọc sách → Ngủ."},
+    {t:"19:00–19:30",i:"🌙",ti:"Ngủ đêm",d:"Bé 6 tháng khỏe có thể ngủ 10–12h liên tục."},
+  ]},
+  7:{label:"Tháng 7",tagline:"Bò & chuyển 2 giấc ngày",badges:["😴 Ngủ 13–15h/ngày","🤱 Bú 3–4 lần/ngày","⏰ Thức 2.5–3h/lần","2–3 giấc","🥣 3 bữa"],tip:"💡 Tháng 7 bé chuyển từ 3 giấc xuống 2 giấc — thường gây quấy và ngủ kém 1–2 tuần. Kiên nhẫn! Thực đơn ăn dặm phong phú hơn, bắt đầu thêm protein (thịt, cá, đậu).",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú cữ 1",d:"Bú mẹ/sữa CT. Bú TRƯỚC ăn dặm sáng 30'."},
+    {t:"7:30–8:00",i:"🥣",ti:"Bữa sáng ăn dặm",d:"Cháo loãng + rau củ. 3–4 thìa."},
+    {t:"9:00–10:30",i:"😴",ti:"Giấc sáng",d:"Sau 2–2.5h thức. Cố 1–1.5h. Đây là lúc chuyển dần về 2 giấc."},
+    {t:"10:30",i:"🧸",ti:"Bú cữ 2 & Chơi vận động",d:"Khuyến khích bò bằng đồ vật, bóng. Bé đang học đứng vịn."},
+    {t:"12:00–12:30",i:"🥣",ti:"Bữa trưa ăn dặm",d:"Cháo + protein (thịt gà/bò/cá xay) + rau. 4–5 thìa. BLW: thêm finger food mềm."},
+    {t:"13:00–15:00",i:"😴",ti:"Giấc trưa (quan trọng nhất)",d:"Cố 1.5–2h. Nếu đang chuyển 2 giấc, giấc này càng cần dài."},
+    {t:"15:00",i:"🤱",ti:"Bú cữ 3",d:"Bú no sau giấc trưa."},
+    {t:"15:30–17:30",i:"🌳",ti:"Ra ngoài / Chơi",d:"Đi xe đẩy, ngắm thiên nhiên. Vận động giúp ngủ đêm ngon."},
+    {t:"17:30",i:"🥣",ti:"Bữa chiều",d:"Trái cây mềm, sữa chua không đường."},
+    {t:"18:30",i:"🤱",ti:"Bú cữ 4",d:"Bú no cuối ngày."},
+    {t:"19:00–19:30",i:"🛁",ti:"Tắm & Routine",d:"Tắm → Mặc đồ ngủ → Đọc sách → Bú → Ngủ."},
+    {t:"19:30",i:"🌙",ti:"Ngủ đêm",d:"Bé 7 tháng có thể ngủ 11–12h. Thức 1 lần là bình thường."},
+  ]},
+  8:{label:"Tháng 8",tagline:"Đứng vịn & pincer grasp",badges:["😴 Ngủ 13–14h/ngày","🤱 Bú 3 lần/ngày","⏰ Thức 3h/lần","2 giấc","🥣 3 bữa đa dạng"],tip:"💡 Tháng 8 bé ổn định 2 giấc ngày. Thực đơn đa dạng hơn nhiều — bắt đầu thử nhiều nguyên liệu mới, kết cấu đặc hơn. Pincer grasp bắt đầu: bé nhặt đồ bằng ngón cái + trỏ.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú cữ 1",d:"Bú mẹ/sữa CT. Giờ thức nhất quán rất quan trọng cho lịch sinh hoạt."},
+    {t:"7:30",i:"🥣",ti:"Bữa sáng",d:"Cháo đặc hơn + protein + rau. 4–6 thìa. Thêm finger food để bé tự cầm."},
+    {t:"8:00–9:30",i:"🧸",ti:"Chơi vận động sáng",d:"Khuyến khích bò, đứng vịn, chuyền đồ 2 tay. Chơi peek-a-boo."},
+    {t:"9:30–11:00",i:"😴",ti:"Giấc sáng",d:"Sau 2.5–3h thức. Cố 1–1.5h."},
+    {t:"11:00",i:"🤱",ti:"Bú cữ 2",d:"Bú sau giấc sáng."},
+    {t:"11:30–12:00",i:"🥣",ti:"Bữa trưa",d:"Cháo/súp đặc + đa dạng nguyên liệu. Finger food BLW. Tập cầm thìa nhựa."},
+    {t:"13:00–15:00",i:"😴",ti:"Giấc trưa dài",d:"Giữ 1.5–2h. Ổn định giờ ngủ giúp ngủ đêm ngon hơn."},
+    {t:"15:00",i:"🤱",ti:"Bú cữ 3 & Snack",d:"Bú chiều + vài miếng trái cây mềm."},
+    {t:"15:30–18:00",i:"🌳",ti:"Chơi & Ra ngoài",d:"Leo, bò, đứng. Tương tác xã hội với người thân."},
+    {t:"17:30–18:00",i:"🥣",ti:"Bữa chiều",d:"Nhỏ hơn bữa trưa. Trái cây, sữa chua, bánh ăn dặm."},
+    {t:"19:00–19:30",i:"🛁",ti:"Tắm & Routine",d:"Tắm → Bú cuối → Đọc sách 1–2 cuốn → Lullaby → Ngủ."},
+    {t:"19:30",i:"🌙",ti:"Ngủ đêm",d:"11–12h. Vẫn có thể thức 1 lần/đêm."},
+  ]},
+  9:{label:"Tháng 9",tagline:"Babbling rõ & separation anxiety đỉnh điểm",badges:["😴 Ngủ 13–14h/ngày","🤱 Bú 3 lần/ngày","⏰ Thức 3–3.5h/lần","2 giấc"],tip:"💡 Tháng 9: separation anxiety đỉnh điểm! Bé khóc khi mẹ rời phòng — hoàn toàn bình thường, não bé đang phát triển sự gắn bó (attachment). Bye-bye routine nhất quán giúp bé an tâm hơn.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Bú/Sữa",d:"200ml sữa CT/bú mẹ. Sữa vẫn quan trọng, đừng giảm quá nhanh."},
+    {t:"7:30",i:"🥣",ti:"Bữa sáng",d:"Cháo đặc/cơm nát mềm + protein + rau. 5–6 thìa. Cho bé cầm thìa tập xúc."},
+    {t:"8:00–10:00",i:"🧸",ti:"Chơi tự do sáng",d:"Crawling, đứng vịn, thả đồ vào hộp. Bé đang học object permanence."},
+    {t:"10:00–11:30",i:"😴",ti:"Giấc sáng (1–1.5h)",d:"Cửa sổ thức 3h. Không cần ngủ quá sớm."},
+    {t:"11:30",i:"🤱",ti:"Bú cữ 2",d:"Bú sau giấc. Tương tác: đọc tên đồ vật, hỏi 'đâu rồi?'"},
+    {t:"12:00",i:"🥣",ti:"Bữa trưa",d:"Bữa lớn nhất trong ngày. Cơm nát, thịt xé nhỏ, rau ninh mềm. Finger food BLW."},
+    {t:"13:00–15:00",i:"😴",ti:"Giấc trưa (cố 2h)",d:"Giữ nhất quán giờ ngủ trưa — bé đang consolidate learning từ buổi sáng."},
+    {t:"15:00",i:"🤱",ti:"Bú cữ 3 & Snack",d:"Phô mai mềm, trái cây xắt nhỏ."},
+    {t:"15:30–18:00",i:"🌳",ti:"Ra ngoài / Chơi",d:"Tiếp xúc môi trường: cỏ, cát sạch. Bé khám phá cảm giác bằng tay."},
+    {t:"17:30",i:"🥣",ti:"Bữa chiều nhỏ",d:"Nhẹ nhàng, không quá no trước ngủ."},
+    {t:"18:30",i:"🤱",ti:"Bú trước ngủ",d:"Bú no lần cuối. Không để bé ngủ trên ti/bình nếu có thể."},
+    {t:"19:00–19:30",i:"🛁",ti:"Tắm & Routine",d:"Đọc sách 2–3 cuốn — bé tháng 9 thường thích sách hơn. Lullaby quen thuộc."},
+    {t:"19:30",i:"🌙",ti:"Ngủ đêm",d:"11–12h liên tục. Separation anxiety có thể gây thức đêm — respond bình tĩnh, nhanh gọn."},
+  ]},
+  10:{label:"Tháng 10",tagline:"Tập bước & từ đầu tiên có nghĩa",badges:["😴 Ngủ 12–14h/ngày","🤱 Bú 2–3 lần/ngày","⏰ Thức 3–4h/lần","2 giấc"],tip:"💡 Tháng 10 bé có thể nói từ đầu tiên có nghĩa (mama/baba)! Nói chuyện nhiều với bé, gọi tên đồ vật, đọc sách thường xuyên. Đây là thời điểm vàng cho ngôn ngữ.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Sữa/Bú",d:"200ml sữa. Giờ thức ổn định rất quan trọng."},
+    {t:"7:30",i:"🥣",ti:"Bữa sáng",d:"Cơm nát/cháo đặc + trứng + rau xắt nhỏ. Cho bé tự cầm thìa."},
+    {t:"8:00–10:00",i:"🚶",ti:"Chơi vận động tích cực",d:"Tập bước dọc theo sofa. Bóng, hộp to để leo vào."},
+    {t:"10:00–11:30",i:"😴",ti:"Giấc sáng (1h)",d:"Cửa sổ thức 3–3.5h. Giấc sáng đang ngắn dần."},
+    {t:"11:30",i:"🤱",ti:"Sữa/Bú cữ 2",d:"Sữa sau giấc sáng."},
+    {t:"12:00–12:30",i:"🥣",ti:"Bữa trưa",d:"Bữa chính nhất. Đa dạng nguyên liệu. Tập dùng thìa và cốc tập uống."},
+    {t:"13:00–15:00",i:"😴",ti:"Giấc trưa (1.5–2h)",d:"Giữ nhất quán giờ ngủ — đây là giấc quan trọng nhất."},
+    {t:"15:00",i:"🤱",ti:"Sữa & Snack chiều",d:"Sữa + bánh gạo, phô mai, trái cây xắt nhỏ."},
+    {t:"15:30–18:00",i:"🌳",ti:"Ra ngoài trời",d:"Tập đứng/bước ở sân. Chơi với cát, nước an toàn."},
+    {t:"17:30–18:00",i:"🥣",ti:"Bữa tối nhỏ",d:"Ăn nhẹ cùng gia đình — bé học qua quan sát người lớn ăn."},
+    {t:"18:30",i:"🤱",ti:"Sữa/Bú tối",d:"Bú trước tắm hoặc trước ngủ."},
+    {t:"19:00–19:30",i:"🛁",ti:"Tắm & Routine",d:"Đọc sách — bé tháng 10 có thể chỉ vào tranh trong sách!"},
+    {t:"19:30",i:"🌙",ti:"Ngủ đêm",d:"11–12h. Bé ngủ ngon hơn khi vận động nhiều ban ngày."},
+  ]},
+  11:{label:"Tháng 11",tagline:"Đứng tự do & nói nhiều hơn",badges:["😴 Ngủ 12–14h/ngày","🤱 Bú 2 lần/ngày","⏰ Thức 3.5–4h/lần","2 giấc (sáng ngắn dần)"],tip:"💡 Tháng 11 bé đang chuẩn bị chuyển từ 2 giấc xuống 1 giấc (thường xảy ra ở 14–18 tháng). Giấc sáng ngắn dần là dấu hiệu — đừng vội bỏ, quá sớm làm bé overtired.",blocks:[
+    {t:"7:00",i:"🌅",ti:"Thức & Sữa",d:"200ml sữa. Bé tháng 11 uống được từ cốc tập hoàn toàn."},
+    {t:"7:30",i:"🥣",ti:"Bữa sáng",d:"Cơm nát + trứng + rau. Bé bắt đầu ăn gần giống người lớn (ít muối, mềm)."},
+    {t:"8:00–11:00",i:"🚶",ti:"Chơi năng động buổi sáng",d:"Đứng tự do, bước vài bước. Bé rất thích leo trèo — giám sát kỹ!"},
+    {t:"11:00–12:00",i:"😴",ti:"Giấc sáng (45–60', đang ngắn dần)",d:"Nếu bé từ chối 2+ ngày liên tiếp, thử chuyển sang 1 giấc trưa dài."},
+    {t:"12:00",i:"🤱",ti:"Sữa cữ 2",d:"Sữa sau giấc."},
+    {t:"12:00–12:30",i:"🥣",ti:"Bữa trưa",d:"Bữa lớn nhất. Thức ăn gần như của gia đình (nấu ít muối riêng)."},
+    {t:"13:30–15:30",i:"😴",ti:"Giấc trưa (1.5–2h)",d:"Nếu đã bỏ giấc sáng, ngủ trưa sớm hơn (~12:30–13:00)."},
+    {t:"15:30",i:"🤱",ti:"Sữa & Snack",d:"150–200ml sữa + snack: chuối, phô mai, bánh ít đường."},
+    {t:"16:00–18:00",i:"🌳",ti:"Ra ngoài / Vận động",d:"Đi bộ, tập leo cầu thang có kiểm soát. Chơi bóng, âm nhạc."},
+    {t:"18:00",i:"🥣",ti:"Bữa tối",d:"Ăn cùng gia đình. Bé học qua quan sát — rất quan trọng!"},
+    {t:"18:30",i:"🤱",ti:"Sữa tối",d:"Cữ sữa cuối. Bé tháng 11 thường còn 2 cữ sữa/ngày."},
+    {t:"19:00–19:30",i:"🛁",ti:"Tắm & Routine",d:"Đọc sách 2–3 cuốn. Bé tháng 11 chỉ vào hình, bắt chước âm thanh trong sách."},
+    {t:"19:30",i:"🌙",ti:"Ngủ đêm",d:"10–12h. Bé ngủ ngon khi đã tiêu hao nhiều năng lượng ban ngày."},
+  ]},
+  12:{label:"Tháng 12 🎂",tagline:"1 tuổi — Happy Birthday bé yêu! 🎉",badges:["😴 Ngủ 11–14h/ngày","🍼 Sữa 2 lần/ngày","⏰ Thức 4–5h/lần","2 giấc (sắp chuyển 1)","🎂 1 TUỔI!"],tip:"💡 Chúc mừng mẹ và bé đã hoàn thành hành trình kỳ diệu 12 tháng! Từ 12 tháng có thể chuyển sang sữa tươi nguyên kem (whole milk). Bé sẽ sớm chuyển xuống 1 giấc trưa — thường ở 14–18 tháng.",blocks:[
+    {t:"7:00",i:"🎉",ti:"Thức & Sữa sáng",d:"200ml sữa tươi/sữa CT/bú mẹ. Bé 1 tuổi uống hoàn toàn từ cốc."},
+    {t:"7:30",i:"🥣",ti:"Bữa sáng",d:"Giống bữa ăn gia đình: cơm nát, trứng, rau, thịt — nấu ít muối."},
+    {t:"8:00–11:00",i:"🏃",ti:"Chơi tích cực sáng",d:"Đi bộ, leo trèo, đẩy xe, vẽ ngón tay, xếp hộp."},
+    {t:"11:00–12:00",i:"😴",ti:"Giấc sáng (tùy bé — 30–60')",d:"Nhiều bé 12 tháng đang dần bỏ giấc sáng. Theo dõi tín hiệu của bé."},
+    {t:"12:00–12:30",i:"🥣",ti:"Bữa trưa cùng gia đình",d:"Cơm mềm + đủ nhóm dinh dưỡng. Dù bẩn cũng hãy để bé tự ăn!"},
+    {t:"13:00–15:00",i:"😴",ti:"Giấc trưa (1.5–2h)",d:"Nếu đã bỏ giấc sáng, ngủ trưa sớm hơn (~12:30). Giữ nhất quán."},
+    {t:"15:00",i:"🍼",ti:"Sữa & Snack chiều",d:"150–200ml sữa + snack lành mạnh. Trái cây, phô mai, bánh gạo ít muối."},
+    {t:"15:30–18:00",i:"🌳",ti:"Ra ngoài / Vận động chiều",d:"Đi bộ, chạy nhún, leo cầu trượt nhỏ. Tiếp xúc xã hội với trẻ khác rất có ích."},
+    {t:"18:00",i:"🥣",ti:"Bữa tối cùng gia đình",d:"Bé ăn cùng mọi người. Tắt màn hình, nói chuyện."},
+    {t:"18:30",i:"🍼",ti:"Sữa tối",d:"Cữ sữa cuối. Không để bé ngủ với bình — hại răng sữa!"},
+    {t:"19:00–19:30",i:"🛁",ti:"Tắm & Routine",d:"Bé 1 tuổi thích tự tắm — cho cầm đồ chơi nước. Đọc sách 2–3 cuốn."},
+    {t:"19:30",i:"🌙",ti:"Ngủ đêm",d:"10–12h. Bé ngủ ngon khi có routine nhất quán và vận động đủ ban ngày."},
+  ]},
+};
+
+/* ══════════ MILESTONES DATA ══════════ */
+const MS=[
+  {m:1,ti:"Tháng 1",sub:"Làm quen với thế giới",
+   mo:["Ngẩng đầu vài giây khi nằm sấp","Co duỗi chân tay phản xạ","Nắm tay khi chạm lòng bàn tay","Giật mình với tiếng ồn lớn"],
+   co:["Nhìn tập trung vật cách 20–30cm","Phân biệt tiếng mẹ với tiếng lạ","Nhận ra mùi sữa mẹ","Nhìn theo ánh sáng"],
+   so:["Mỉm cười phản xạ (chưa phải xã hội)","Khóc là cách giao tiếp duy nhất"],w:"Không phản ứng với tiếng ồn lớn, không bú được."},
+  {m:2,ti:"Tháng 2",sub:"Nụ cười xã hội đầu tiên 😄",
+   mo:["Ngẩng đầu 45° khi tummy time","Mắt theo dõi chuyển động","Cử động có chủ đích hơn"],
+   co:["Nhận ra khuôn mặt quen","Im lặng khi nghe giọng nói quen thuộc","Phân biệt ngày/đêm bắt đầu"],
+   so:["Mỉm cười XÃ HỘI khi nhìn mặt người 🎉","Gầm gừ bập bẹ lần đầu","Phấn khích khi được nói chuyện"],w:"Không mỉm cười đáp lại khi người lớn nói chuyện trực tiếp."},
+  {m:3,ti:"Tháng 3",sub:"Cười khanh khách & tìm bàn tay",
+   mo:["Ngẩng đầu 90° khi tummy time","Chống tay khi nằm sấp","Mở nắm bàn tay chủ động","Đá chân mạnh và có ý thức"],
+   co:["Nhìn bàn tay với vẻ thích thú","Quay đầu về phía âm thanh","Phân biệt màu sắc tươi sáng tốt hơn"],
+   so:["Cười phá lên khanh khách 😄","Phát âm nguyên âm: aaah, ooh","Thích nhìn gương"],w:"Không ngẩng đầu khi tummy time, không phản ứng giọng mẹ."},
+  {m:4,ti:"Tháng 4",sub:"Lật & Wonder Week 19",
+   mo:["Lật từ sấp sang ngửa (hoặc ngược)","Chịu lực trên cẳng tay khi tummy time","Với tay lấy đồ vật","Đưa đồ vào miệng"],
+   co:["Nhận ra bình sữa/ti giả","Hiểu nguyên nhân–kết quả cơ bản","Wonder Week 19 — bé khó chịu vài tuần"],
+   so:["Cười to khanh khách 😄","Babbling: baba, mama (chưa có nghĩa)","Phấn khích khi thấy người thân"],w:"Không với tay lấy đồ vật, không lật được sau nhiều lần thử."},
+  {m:5,ti:"Tháng 5",sub:"Ngồi có đỡ & bi bô sôi nổi",
+   mo:["Ngồi khi có người đỡ lưng","Lật cả 2 chiều thành thạo","Dùng 2 tay chơi đồ vật","Nhảy lên khi đứng trên lòng người lớn"],
+   co:["Tìm vật bị giấu một phần","Khám phá vật bằng miệng và tay","Phân biệt màu sắc rõ hơn"],
+   so:["Nhận ra tên gọi của mình","Phản ứng với giọng vui/buồn của mẹ","Sợ người lạ bắt đầu"],w:"Không ngồi được khi có đỡ, không lật, không phản ứng tên."},
+  {m:6,ti:"Tháng 6",sub:"Ngồi vững & bắt đầu ăn dặm 🥣",
+   mo:["Ngồi tự do không cần đỡ (nhiều bé)","Bắt đầu bò hoặc trườn","Chuyền đồ giữa 2 tay","Đứng khi được giữ nách"],
+   co:["Hiểu nguyên nhân–kết quả","Thích gõ đồ vào nhau để nghe tiếng","Bắt đầu ăn dặm — cột mốc lớn!"],
+   so:["Gọi mama/baba vô ý","Chơi peek-a-boo","Separation anxiety bắt đầu"],w:"Không tự ngồi, không chuyền đồ giữa 2 tay."},
+  {m:7,ti:"Tháng 7",sub:"Bò & object permanence",
+   mo:["Bò bằng tay và đầu gối / bò bụng","Tự ngồi vững và xoay người","Đứng khi vịn tay","Nhặt đồ nhỏ bằng 2–3 ngón"],
+   co:["Tìm vật bị giấu hoàn toàn (object permanence)","Nhớ trò chơi quen","Hiểu 'không' kèm giọng điệu"],
+   so:["Bắt chước âm thanh và cử chỉ","Sợ người lạ rõ rệt","Vui mừng khi thấy người thân"],w:"Không cố di chuyển, không phản ứng tên, không phát âm."},
+  {m:8,ti:"Tháng 8",sub:"Đứng vịn & pincer grasp",
+   mo:["Đứng vịn đồ vật vững","Đi men theo đồ vật (cruising)","Pincer grasp: cầm bằng ngón cái + trỏ","Leo lên đồ vật thấp"],
+   co:["Chỉ vào đồ vật muốn","Bắt chước hành động đơn giản","Hiểu lệnh: 'đưa', 'không', 'vỗ tay'"],
+   so:["Vẫy tay tạm biệt 👋","Thể hiện cảm xúc rõ ràng hơn","Separation anxiety mạnh hơn"],w:"Không đứng vịn, không dùng âm thanh giao tiếp, không bắt chước."},
+  {m:9,ti:"Tháng 9",sub:"Di chuyển linh hoạt & hiểu nhiều",
+   mo:["Di chuyển tự do: bò, đứng, ngồi","Buông tay đứng tự do vài giây","Nhặt đồ nhỏ thành thạo","Ném đồ vật cố ý"],
+   co:["Hiểu 10–20 từ đơn giản","Tìm vật ở nhiều vị trí","Giải quyết vấn đề đơn giản"],
+   so:["Gọi mama/baba có chủ đích 🎉","Thể hiện muốn được ôm","Chơi tương tác đơn giản"],w:"Chưa nói âm nào, không kết hợp cử chỉ với âm thanh."},
+  {m:10,ti:"Tháng 10",sub:"Tập bước & từ đầu tiên có nghĩa",
+   mo:["Tập bước với sự hỗ trợ","Đi vài bước tự do (một số bé) 🎉","Leo cầu thang khi bò","Ném và lăn bóng"],
+   co:["Nói 1–3 từ có nghĩa","Chỉ vào tranh khi được hỏi","Hiểu chỉ dẫn 2 bước"],
+   so:["Chơi song song với bạn","Tự hào khi làm được điều gì đó","Bắt chước người lớn làm việc nhà"],w:"Không cố đứng dù được đỡ, không nói từ nào có nghĩa."},
+  {m:11,ti:"Tháng 11",sub:"Tự lập & khám phá giới hạn",
+   mo:["Đứng vững 10+ giây tự do","Bước 2–5 bước không cần vịn","Cầm thìa tự xúc ăn","Lật trang sách dày"],
+   co:["Vốn từ 3–5 từ","Hiểu ~50 từ","Chơi giả vờ đơn giản (giả vờ uống)"],
+   so:["Lắc đầu 'không' từ chối","Bắt chước cử chỉ xã hội","Ghen tuông khi mẹ chú ý bé khác"],w:"Không đứng vịn, không có giao tiếp mắt ổn định."},
+  {m:12,ti:"Tháng 12 🎂",sub:"1 tuổi — cột mốc đặc biệt nhất!",
+   mo:["Đi được 1–10+ bước tự do 🎉","Đứng vững không cần vịn lâu","Ném và lăn bóng","Cầm bút vẽ nguệch ngoạc"],
+   co:["Nói 1–5 từ có nghĩa","Hiểu 100+ từ","Dùng đồ vật đúng chức năng","Chơi giả vờ rõ ràng hơn"],
+   so:["Ôm và hôn khi được hỏi 🥰","Pointing — chỉ tay vào điều muốn","Thể hiện cảm xúc đa dạng","Tantrum nhẹ bắt đầu xuất hiện"],w:"Không đứng vịn, không nói bất kỳ từ nào, không dùng cử chỉ pointing."},
+];
+
+/* ══════════ TOYS DATA ══════════ */
+const TOYS={
+  "0-3":[
+    {e:"🖤🤍",n:"Thẻ tương phản đen trắng",d:"Mắt sơ sinh nhạy với tương phản cao. Thẻ đen trắng là kích thích thị giác tốt nhất 3 tháng đầu.",sk:["Thị giác","Não bộ"],l:"https://beacons.ai/linhpt74"},
+    {e:"🔔",n:"Lục lạc nhẹ & vòng nắm tay",d:"Tiếng lắc kích thích thính giác. Nhẹ, vừa tay sơ sinh, chất liệu food-grade an toàn.",sk:["Thính giác","Cầm nắm"],l:"https://beacons.ai/linhpt74"},
+    {e:"🪆",n:"Mobile treo cũi có nhạc",d:"Kích thích thị giác và nhận thức không gian. Màu tươi sáng + âm nhạc nhẹ.",sk:["Thị giác","Nhận thức"],l:"https://beacons.ai/linhpt74"},
+    {e:"🎵",n:"Máy tạo tiếng ồn trắng",d:"Mô phỏng âm thanh trong bụng mẹ, giúp bé ngủ ngon và bình tĩnh hơn. Đặt cách bé >1m.",sk:["Giấc ngủ","Bình tĩnh"],l:"https://beacons.ai/linhpt74"},
+    {e:"🧸",n:"Gấu bông nhỏ mịn (comfort object)",d:"Giới thiệu từ tháng 2–3. Giúp bé tự an ủi khi không có mẹ bên. Chọn loại không rụng lông.",sk:["An toàn","Tình cảm"],l:"https://beacons.ai/linhpt74"},
+  ],
+  "4-6":[
+    {e:"🎯",n:"Play gym / Thảm chơi có cung",d:"Khuyến khích tummy time, với tay lấy đồ. Chọn loại nhiều phụ kiện thay đổi được.",sk:["Vận động thô","Với tay"],l:"https://beacons.ai/linhpt74"},
+    {e:"🪞",n:"Gương an toàn (nhựa không vỡ)",d:"Bé thích 'chơi với em bé trong gương'. Kích thích nhận thức về bản thân.",sk:["Xã hội","Tự nhận thức"],l:"https://beacons.ai/linhpt74"},
+    {e:"🦒",n:"Teether mọc răng an toàn",d:"Giai đoạn 4–7 tháng bé mọc răng đau nhức. Teether mềm food-grade giúp bé bớt khó chịu.",sk:["Xúc giác","Mọc răng"],l:"https://beacons.ai/linhpt74"},
+    {e:"📦",n:"Hộp nhạc bóp kêu",d:"Bóp → kêu: bé học nguyên nhân–kết quả. Nhẹ, dễ cầm cho bàn tay 4–6 tháng.",sk:["Nhân quả","Cầm nắm"],l:"https://beacons.ai/linhpt74"},
+    {e:"🎹",n:"Đàn piano đạp chân",d:"Bé nằm đạp chân → đàn kêu. Kết nối hành động với âm thanh. Rất được yêu thích!",sk:["Nhân quả","Âm nhạc","Chân"],l:"https://beacons.ai/linhpt74"},
+  ],
+  "7-9":[
+    {e:"🧱",n:"Khối xếp hình mềm (soft blocks)",d:"Xếp chồng, gõ vào nhau, ném. Phát triển vận động tinh và nhận thức không gian.",sk:["Vận động tinh","Không gian"],l:"https://beacons.ai/linhpt74"},
+    {e:"🎀",n:"Hộp thả hình khối đầu tiên",d:"Thả khối vào lỗ phù hợp — bài tập giải quyết vấn đề đầu tiên. Bé 8–9 tháng bắt đầu hiểu hình dạng.",sk:["Giải quyết VĐ","Hình dạng"],l:"https://beacons.ai/linhpt74"},
+    {e:"📚",n:"Sách board book cảm quan",d:"Bìa cứng, hình to rõ. Bé 7–9 tháng thích lật trang, cầm sách, nghe đọc.",sk:["Ngôn ngữ","Vận động tinh"],l:"https://beacons.ai/linhpt74"},
+    {e:"🎃",n:"Bóng vải mềm phát tiếng",d:"Lăn, ném, đuổi theo. Kích thích bò mạnh. Kích thước lớn hơn nắm tay bé.",sk:["Vận động thô","Bò"],l:"https://beacons.ai/linhpt74"},
+    {e:"🥁",n:"Trống mini / đồ chơi gõ",d:"Gõ → tiếng. Phát triển nhịp điệu và nhân quả. Bé tháng 8–9 rất thích gõ mọi thứ!",sk:["Nhân quả","Âm nhạc"],l:"https://beacons.ai/linhpt74"},
+  ],
+  "10-12":[
+    {e:"🚶",n:"Xe tập đi có trọng lực (push walker)",d:"Hỗ trợ tập bước. Chọn loại có bánh trở lực để bé không đi quá nhanh — an toàn hơn.",sk:["Đi bộ","Vận động thô"],l:"https://beacons.ai/linhpt74"},
+    {e:"🏗️",n:"Hộp thả nhiều hình dạng",d:"Tròn, vuông, tam giác. Phát triển tư duy logic và tay tinh.",sk:["Logic","Tay tinh"],l:"https://beacons.ai/linhpt74"},
+    {e:"🎨",n:"Màu vẽ ngón tay washable",d:"Nghệ thuật đầu tiên! An toàn nếu liếm, washable dễ rửa. Kích thích xúc giác và sáng tạo.",sk:["Sáng tạo","Xúc giác"],l:"https://beacons.ai/linhpt74"},
+    {e:"🏠",n:"Đồ chơi gia giả (pretend play)",d:"Điện thoại, nồi nhựa, búp bê. Bé 10–12 tháng bắt đầu chơi giả vờ — cực kỳ quan trọng cho ngôn ngữ!",sk:["Xã hội","Ngôn ngữ"],l:"https://beacons.ai/linhpt74"},
+    {e:"🧩",n:"Puzzle gỗ hình to có núm cầm",d:"2–4 mảnh, núm cầm dễ nắm. Phát triển tay tinh và nhận thức hình dạng.",sk:["Tay tinh","Không gian"],l:"https://beacons.ai/linhpt74"},
+  ]
+};
+
+/* ══════════ WONDER WEEKS DATA ══════════
+   Each WW: [start_week, end_week, name, skills_gained, tips[]]
+   Weeks are calculated from DUE DATE (not birth date) */
+const WW=[
+  {s:5,e:6,n:"Leap 1 — Cảm nhận",sk:"Bé bắt đầu nhận biết các cảm giác: ánh sáng, âm thanh, mùi, xúc giác rõ ràng hơn.",
+   tips:["Ôm bé nhiều hơn, skin-to-skin giúp bé an tâm","Giảm kích thích môi trường: đèn nhẹ, tiếng ồn nhỏ","Bú theo nhu cầu — bé quấy hơn là bình thường","Đây là bước đầu tiên trong hành trình nhận thức của bé"]},
+  {s:8,e:9,n:"Leap 2 — Nhận ra khuôn mẫu",sk:"Bé nhận ra khuôn mẫu lặp lại: nhịp tim mẹ, bài hát quen, khuôn mặt thân thuộc.",
+   tips:["Hát cùng một bài ru mỗi tối","Massage theo nhịp điệu đều đặn","Cho bé nhìn đồ vật di chuyển chậm (mobile)","Nụ cười xã hội đầu tiên sắp xuất hiện sau leap này!"]},
+  {s:12,e:13,n:"Leap 3 — Chuyển tiếp mượt mà",sk:"Bé hiểu sự chuyển tiếp liên tục giữa các trạng thái: ánh sáng thay đổi, âm thanh trượt dần.",
+   tips:["Tummy time nhiều hơn — bé đang chuẩn bị kiểm soát đầu","Nói chuyện chậm rãi, rõ ràng","Cười và tương tác mặt đối mặt nhiều hơn","Bé sẽ bắt đầu cười khanh khách sau leap này"]},
+  {s:19,e:20,n:"Leap 4 — Sự kiện",sk:"Bé hiểu thế giới qua các sự kiện: vật rơi xuống, mặt biến mất rồi hiện ra (peek-a-boo).",
+   tips:["Chơi peek-a-boo nhiều — đây chính xác là điều não bé cần","Đây thường là giai đoạn sleep regression 4 tháng","Giữ routine thật nhất quán trong giai đoạn này","Bé sẽ bắt đầu với tay lấy đồ vật sau leap này"]},
+  {s:26,e:28,n:"Leap 5 — Các mối quan hệ",sk:"Bé hiểu khoảng cách, quan hệ giữa các vật: ở trong/ngoài, xa/gần, trên/dưới.",
+   tips:["Bé sắp ngồi — hỗ trợ bằng gối quanh người","Separation anxiety bắt đầu — bình thường và lành mạnh","Chơi trò thả đồ vào hộp rồi lấy ra","Đây thường là giai đoạn chuẩn bị ăn dặm"]},
+  {s:37,e:40,n:"Leap 6 — Phân loại",sk:"Bé phân loại thế giới: đây là đồ ăn, đây là đồ chơi, đây là người thân, người lạ.",
+   tips:["Đây là đỉnh điểm của stranger anxiety — không sao cả","Giới thiệu người lạ từ từ, không ép bé","Đặt tên cho mọi thứ bé nhìn thấy và chạm vào","Chơi trò phân loại đơn giản: lớn/nhỏ, đỏ/xanh"]},
+  {s:46,e:48,n:"Leap 7 — Trình tự",sk:"Bé hiểu trình tự hành động: làm A rồi mới B, bật công tắc rồi đèn sáng.",
+   tips:["Cho bé 'tự làm' từng bước nhỏ: lật trang sách, nhấn nút","Bé hay ném và xem đồ rơi — đây là học tập, không phải nghịch phá","Routine tắm-ngủ đặc biệt hiệu quả lúc này","Bé học rất nhanh bằng cách quan sát người lớn"]},
+  {s:55,e:57,n:"Leap 8 — Chương trình",sk:"Bé hiểu kế hoạch đơn giản: nếu làm thế này, kết quả sẽ là thế kia.",
+   tips:["Đây thường là giai đoạn tantrum đầu tiên — não bé đang rất bận rộn","Bé bắt đầu có ý chí riêng — hãy tôn trọng trong phạm vi an toàn","Đặt giới hạn nhẹ nhàng nhất quán","Bé đang học nhân quả ở mức cao hơn — khuyến khích khám phá"],},
+  {s:64,e:65,n:"Leap 9 — Nguyên tắc",sk:"Bé hiểu nguyên tắc: cái này luôn hoạt động theo cách này, đây là quy tắc.",
+   tips:["Bé thích kiểm tra giới hạn — đây là phát triển bình thường","Nhất quán trong phản ứng của mẹ là quan trọng nhất","Bé đang học rằng thế giới có quy tắc, không phải cố tình quậy","Đọc sách, kể chuyện có cấu trúc rõ ràng rất tốt"],},
+  {s:75,e:76,n:"Leap 10 — Hệ thống",sk:"Bé hiểu hệ thống phức tạp, xây dựng thế giới quan riêng của mình.",
+   tips:["Đây là leap lớn nhất — bé thay đổi nhiều nhất","Chơi roleplay, đồ chơi giả vờ rất quan trọng giai đoạn này","Ngôn ngữ bùng nổ sau leap này — nói chuyện nhiều với bé","Chúc mừng — bé đã hoàn thành tất cả 10 Wonder Weeks!"],},
+];
+
+/* ══════════ WONDER WEEK LOGIC ══════════ */
+function checkWW(){
+  const inp=document.getElementById('wwDate').value;
+  if(!inp){alert('Vui lòng nhập ngày dự sinh hoặc ngày sinh của bé!');return;}
+  const due=new Date(inp);
+  const today=new Date();
+  // weeks since due date (can be negative if not born yet, but we clamp)
+  const msPerWeek=7*24*60*60*1000;
+  const weekAge=Math.floor((today-due)/msPerWeek);
+  const res=document.getElementById('wwResult');
+  if(weekAge<0){
+    res.className='ww-result active ww-ok';
+    res.innerHTML=`<div class="ww-result-title">🌱 Bé chưa chào đời</div><div class="ww-result-body">Bé dự sinh vào <strong>${due.toLocaleDateString('vi-VN')}</strong>. Còn khoảng <strong>${Math.abs(weekAge)} tuần</strong> nữa bé sẽ ra đời. Hãy nghỉ ngơi và chuẩn bị sẵn sàng nhé mẹ!</div>`;
+    return;
+  }
+  // find current or upcoming WW
+  const current=WW.find(w=>weekAge>=w.s&&weekAge<=w.e);
+  const upcoming=WW.find(w=>w.s>weekAge);
+  if(current){
+    res.className='ww-result active ww-on';
+    const weeksLeft=current.e-weekAge;
+    res.innerHTML=`
+      <div class="ww-result-title">🌀 Bé đang trong Wonder Week! (Tuần ${weekAge})</div>
+      <div class="ww-result-body">
+        <strong>${current.n}</strong><br>
+        ${current.sk}<br><br>
+        ⏳ Còn khoảng <strong>${weeksLeft} tuần</strong> nữa là qua giai đoạn này.<br><br>
+        <strong>Gợi ý vượt qua cùng bé:</strong>
+      </div>
+      <div class="ww-tips">${current.tips.map(t=>`<div class="ww-tip-item">${t}</div>`).join('')}</div>`;
+  } else {
+    const nextWW=upcoming;
+    let nextInfo='';
+    if(nextWW){
+      const weeksUntil=nextWW.s-weekAge;
+      nextInfo=`<br><br>🔮 Wonder Week tiếp theo: <strong>${nextWW.n}</strong> — còn khoảng <strong>${weeksUntil} tuần</strong> nữa.`;
+    }
+    res.className='ww-result active ww-ok';
+    res.innerHTML=`
+      <div class="ww-result-title">✅ Bé đang ở giai đoạn ổn định (Tuần ${weekAge})</div>
+      <div class="ww-result-body">
+        Bé không trong Wonder Week ngay lúc này — đây là giai đoạn bình tĩnh, bé có thể ngủ ngon hơn và vui hơn bình thường. Tận hưởng khoảng thời gian này nhé mẹ!${nextInfo}
+      </div>`;
+  }
+  res.style.display='block';
+}
+
+/* ══════════ RENDER FUNCTIONS ══════════ */
+function renderS(m){
+  const cont=document.getElementById('scont');
+  if(m===''||m===undefined){cont.innerHTML='';return;}
+  const d=S[m];
+  cont.innerHTML=`
+    <div class="sc">
+      <div class="sh">
+        <div class="sh-l"><h3>☀️ ${d.label}</h3><p>${d.tagline}</p></div>
+        <div class="sbadges">${d.badges.map(b=>`<span class="sbadge">${b}</span>`).join('')}</div>
+      </div>
+      <div class="stl">${d.blocks.map(b=>`
+        <div class="sbl">
+          <div class="stm">${b.t}</div>
+          <div class="sbody">
+            <div class="stitle">${b.i} ${b.ti}</div>
+            <div class="sdesc">${b.d}</div>
+          </div>
+        </div>`).join('')}
+      </div>
+      <div class="stip">${d.tip}</div>
+    </div>`;
+}
+
+function renderM(m){
+  const cont=document.getElementById('mcont');
+  if(!m){cont.innerHTML='';return;}
+  const d=MS.find(x=>x.m===m);
+  if(!d){cont.innerHTML='';return;}
+  cont.innerHTML=`
+    <div class="ms-single">
+      <div class="ms-single-hdr">
+        <div class="ms-num"><span class="n">${d.m}</span><span class="l">THÁNG</span></div>
+        <div><div class="ms-single-title">${d.ti}</div><div class="ms-single-sub">${d.sub}</div></div>
+      </div>
+      <div class="ms-body2">
+        <div class="ms-col"><h4>💪 Vận động</h4><div class="ms-list">${d.mo.map(i=>`<div class="ms-item">${i}</div>`).join('')}</div></div>
+        <div class="ms-col"><h4>🧠 Nhận thức & Ngôn ngữ</h4><div class="ms-list">${d.co.map(i=>`<div class="ms-item">${i}</div>`).join('')}</div></div>
+        <div class="ms-col"><h4>🤗 Xã hội & Cảm xúc</h4><div class="ms-list">${d.so.map(i=>`<div class="ms-item">${i}</div>`).join('')}</div></div>
+      </div>
+      <div class="ms-warn2">⚠️ <span>Cần gặp bác sĩ nếu: ${d.w}</span></div>
+    </div>`;
+}
+
+function renderT(k){
+  document.getElementById('tgrid').innerHTML=TOYS[k].map(t=>`
+    <div class="tc">
+      <div class="te">${t.e}</div>
+      <div class="tn">${t.n}</div>
+      <div class="td">${t.d}</div>
+      <div class="tskills">${t.sk.map(s=>`<span class="tsk">${s}</span>`).join('')}</div>
+      <a href="${t.l}" target="_blank" class="tbuy">🛒 Xem trên Shopee / Beacons</a>
+    </div>`).join('');
+}
+
+function sw(tab){
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+  document.querySelector('[data-tab="'+tab+'"]')?.classList.add('active');
+}
+
+// Init default toys display
+renderT('0-3');
+</script>
+</body>
+</html>
