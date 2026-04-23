@@ -711,6 +711,124 @@
   .star-btn.lit, .star-btn:hover { color: var(--gold); }
 
   /* RESPONSIVE */
+  /* ── HAMBURGER BUTTON ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .hamburger:hover { background: var(--stone-100); }
+  .hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--stone-800);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE NAV DRAWER ── */
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(61,56,49,0.35);
+    z-index: 98;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .mobile-nav-overlay.open { opacity: 1; }
+
+  .mobile-nav-drawer {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(280px, 80vw);
+    height: 100%;
+    background: var(--cream);
+    z-index: 99;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-shadow: -4px 0 24px rgba(61,56,49,0.12);
+  }
+  .mobile-nav-drawer.open { transform: translateX(0); }
+
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 16px;
+    border-bottom: 1px solid var(--stone-200);
+  }
+  .mobile-nav-header .logo { font-size: 1.2rem; }
+  .mobile-nav-close {
+    width: 32px; height: 32px;
+    border: none; background: none; cursor: pointer;
+    font-size: 1.4rem; color: var(--stone-600);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .mobile-nav-close:hover { background: var(--stone-100); }
+
+  .mobile-nav-links {
+    list-style: none;
+    padding: 12px 0;
+    flex: 1;
+  }
+  .mobile-nav-links li a {
+    display: block;
+    padding: 13px 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone-800);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--stone-100);
+    transition: background 0.15s, color 0.15s;
+  }
+  .mobile-nav-links li a:hover { background: var(--stone-100); color: var(--bark); }
+  .mobile-nav-links li a.mobile-highlight {
+    color: var(--bark);
+    font-weight: 600;
+  }
+
+  .mobile-nav-footer {
+    padding: 16px 20px 32px;
+    border-top: 1px solid var(--stone-200);
+  }
+  .mobile-nav-footer a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--bark);
+    color: white;
+    padding: 12px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .mobile-nav-footer a:hover { background: var(--stone-800); }
+
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; gap: 40px; padding: 50px 5% 40px; }
     .hero-visual { flex-direction: row; overflow-x: auto; }
@@ -720,6 +838,8 @@
     .affiliate-inner { grid-template-columns: 1fr; gap: 36px; }
     .feedback-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .affiliate-btn { display: none; }
+    .hamburger { display: flex; }
     .recipe-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
   }
 </style>
@@ -738,8 +858,30 @@
       <li><a href="#phan-hoi">Phản Hồi</a></li>
     </ul>
     <a href="#affiliate" class="affiliate-btn">Mua Đồ Cho Bé</a>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- MOBILE NAV OVERLAY + DRAWER -->
+<div class="mobile-nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+<div class="mobile-nav-drawer" id="navDrawer">
+  <div class="mobile-nav-header">
+    <div class="logo">Mami's <span>Recipes</span></div>
+    <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="#thuc-don" onclick="closeMenu()">🥣 Thực Đơn Hôm Nay</a></li>
+    <li><a href="#cong-thuc" onclick="closeMenu()">📖 Công Thức</a></li>
+    <li><a href="./baby-guide.html" class="mobile-highlight">📅 Cẩm Nang Bé 0–12 Tháng</a></li>
+    <li><a href="#affiliate" onclick="closeMenu()">🛒 Mua Sắm</a></li>
+    <li><a href="#phan-hoi" onclick="closeMenu()">💬 Phản Hồi</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <a href="https://beacons.ai/linhpt74" target="_blank">Mua Đồ Cho Bé →</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -1609,10 +1751,35 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
+// ── HAMBURGER MENU ──────────────────────────────────────
+function toggleMenu() {
+  const open = document.getElementById('navDrawer').classList.contains('open');
+  open ? closeMenu() : openMenu();
+}
+function openMenu() {
+  document.getElementById('navDrawer').classList.add('open');
+  document.getElementById('navOverlay').style.display = 'block';
+  requestAnimationFrame(() => document.getElementById('navOverlay').classList.add('open'));
+  document.getElementById('hamburgerBtn').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  document.getElementById('navDrawer').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    if (!document.getElementById('navOverlay').classList.contains('open'))
+      document.getElementById('navOverlay').style.display = 'none';
+  }, 280);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
 // ========================= INIT =========================
 renderTodayMenu();
 renderRecipes('all');
 renderReviews();
+
 </script>
 </body>
 </html>
